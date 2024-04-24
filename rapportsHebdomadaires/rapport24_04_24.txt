@@ -1,0 +1,3 @@
+Semaine du 17/04/24 au 24/04/24 :
+- Création de la structure du projet (Aaron)
+- Classe ControlePresonnage méthode listerPersonnage (Zaccaria)

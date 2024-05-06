@@ -1,11 +1,17 @@
 package be.helha.poo3.projet.javafx.projetjavafx.personnages;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ *@author Mohamed Samba Demba
+ *
+ */
 public class Gestionpersonnages {
     private static final String GET = "SELECT * FROM personnage b WHERE b.Nom = ?";
     private static final String AJOUT = "INSERT INTO personnage (ID, Nom, PV, Manna) VALUES (?,?,?,?)";
@@ -45,7 +51,7 @@ public class Gestionpersonnages {
         Connection con = null;
         PreparedStatement stmt = null;
         try {
-            con = DaoFactory.getInstance().getConnexion();
+            con = Factory.getInstance().getConnexion();
             stmt = con.prepareStatement(AJOUT);
             stmt.setInt(1, perso.getId());
             stmt.setString(2, perso.getName().trim());
@@ -76,7 +82,7 @@ public class Gestionpersonnages {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            con = DaoFactory.getInstance().getConnexion();
+            con = Factory.getInstance().getConnexion();
             stmt = con.prepareStatement(GET);
             stmt.setString(1, nom.trim());
             rs = stmt.executeQuery();
@@ -106,7 +112,7 @@ public class Gestionpersonnages {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            con = DaoFactory.getInstance().getConnexion();
+            con = Factory.getInstance().getConnexion();
             stmt = con.prepareStatement(LISTER);
             rs = stmt.executeQuery();
             String nom = "";
@@ -134,11 +140,11 @@ public class Gestionpersonnages {
      */
 
     public boolean modifierPersonnage(Personnage perso) {
-        boolean modificationReussie = false; 
+        boolean modificationReussie = false;
         Connection con = null;
         PreparedStatement stmt = null;
         try {
-            con = DaoFactory.getInstance().getConnexion();
+            con = Factory.getInstance().getConnexion();
             stmt = con.prepareStatement(MAJ);
             stmt.setInt(4, perso.getId());
             stmt.setInt(1, perso.getManna());
@@ -155,4 +161,32 @@ public class Gestionpersonnages {
         }
         return modificationReussie;
     }
+
+    /**
+     * Supprime un personnage de la base de données en utilisant son identifiant.
+     *
+     * @param id L'identifiant du personnage à supprimer.
+     * @return {@code true} si la suppression du personnage a réussi, {@code false} sinon.
+     */
+    public boolean supprimerPersonnage(int id) {
+        boolean suppressionReussie = false;
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = Factory.getInstance().getConnexion();
+            stmt = con.prepareStatement(SUPPRIMER);
+            stmt.setInt(1, id);
+            int nb = stmt.executeUpdate();
+            if (nb == 1)
+                suppressionReussie = true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            cloturer(rs, stmt, con);
+        }
+        return suppressionReussie;
+    }
+
+
 }

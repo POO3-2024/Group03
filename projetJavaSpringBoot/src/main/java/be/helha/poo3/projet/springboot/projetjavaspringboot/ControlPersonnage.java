@@ -10,6 +10,8 @@ import java.util.List;
 
 /**
  * Controler des personnages : permet de lister les personnages ou voir le détail d'un personnage
+ * @author Tabi Zaccaria
+ * @see be.helha.poo3.projet.springboot.projetjavaspringboot.ControlPersonnage
  */
 @RestController
 @RequestMapping("/personnage")

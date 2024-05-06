@@ -14,6 +14,8 @@ import java.util.List;
 
 /**
  * Controler des armes : permet de lister les armes ou voir le détail d'une arme
+ * @author Tabi Zaccaria
+ * @see be.helha.poo3.projet.springboot.projetjavaspringboot.ControlArme
  */
 @RestController
 @RequestMapping("/arme")

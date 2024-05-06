@@ -14,6 +14,8 @@ import java.util.List;
 
 /**
  * Controler contient les méthodes d'attaques
+ * @author Tabi Zaccaria
+ * @see be.helha.poo3.projet.springboot.projetjavaspringboot.ControlAttaque
  */
 @RestController
 @RequestMapping("/attaque")

@@ -30,4 +30,34 @@ public class Gestionpersonnages {
         } catch (Exception ex) {
         }
     }
+
+    /**
+     * Méthode pour ajouter un personnage à la base de données.
+     *
+     * @param perso Le personnage à ajouter.
+     * @return {@code true} si l'ajout du personnage a réussi, {@code false} sinon.
+     */
+    public boolean ajouterPerso(Personnage perso) {
+        boolean ajoutReussi = false;
+        Connection con = null;
+        PreparedStatement stmt = null;
+        try {
+            con = DaoFactory.getInstance().getConnexion();
+            stmt = con.prepareStatement(AJOUT);
+            stmt.setInt(1, perso.getId());
+            stmt.setString(2, perso.getName().trim());
+            stmt.setInt(3, perso.getPointDeVie());
+            stmt.setInt(4, perso.getManna());
+            int resultat = stmt.executeUpdate();
+            if (resultat == 1) {
+                ajoutReussi = true;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            cloturer(null, stmt, con);
+        }
+        return ajoutReussi;
+    }
+
 }

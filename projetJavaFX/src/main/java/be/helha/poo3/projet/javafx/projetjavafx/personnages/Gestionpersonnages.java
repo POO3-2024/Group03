@@ -3,6 +3,8 @@ package be.helha.poo3.projet.javafx.projetjavafx.personnages;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Gestionpersonnages {
     private static final String GET = "SELECT * FROM personnage b WHERE b.Nom = ?";
@@ -70,13 +72,13 @@ public class Gestionpersonnages {
     public Personnage getPersonnage(String nom) {
         Personnage perso = null;
         Connection con = null;
-        PreparedStatement ps = null;
+        PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
             con = DaoFactory.getInstance().getConnexion();
-            ps = con.prepareStatement(GET);
-            ps.setString(1, nom.trim());
-            rs = ps.executeQuery();
+            stmt = con.prepareStatement(GET);
+            stmt.setString(1, nom.trim());
+            rs = stmt.executeQuery();
             if (rs.next()) {
                 perso = new Personnage(nom);
                 perso.setManna(rs.getInt(4));
@@ -86,9 +88,42 @@ public class Gestionpersonnages {
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
-            cloturer(rs, ps, con);
+            cloturer(rs, stmt, con);
         }
         return perso;
     }
+
+    /**
+     * Récupère une liste de tous les personnages depuis la base de données.
+     *
+     * @return Une liste contenant tous les personnages présents dans la base de données.
+     */
+
+    public List<Personnage> listerPersonnages() {
+        List<Personnage> liste = new ArrayList<Personnage>();
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = DaoFactory.getInstance().getConnexion();
+            stmt = con.prepareStatement(LISTER);
+            rs = stmt.executeQuery();
+            String nom = "";
+            while (rs.next()) {
+                nom = rs.getString(2);
+               Personnage perso = new Personnage(nom);
+                perso.setManna(rs.getInt(4));
+                perso.setPointDeVie(rs.getInt(3));
+                perso.setId(rs.getInt(1));
+                liste.add(perso);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            cloturer(rs, stmt, con);
+        }
+        return liste;
+    }
+
 
 }

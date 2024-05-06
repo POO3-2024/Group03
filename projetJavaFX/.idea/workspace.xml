@@ -7,7 +7,6 @@
     <list default="true" id="cbcd6381-d0d5-4f2b-b5b7-a68739728ddd" name="Changes" comment="Ajout des attributs ainsi que la méthode 'cloturer'.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/personnages/Gestionpersonnages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/personnages/Gestionpersonnages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/personnages/Personnage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/personnages/Personnage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +117,7 @@
       <option name="presentableId" value="Default" />
       <updated>1713943099109</updated>
       <workItem from="1713943100245" duration="552000" />
-      <workItem from="1715000937049" duration="2761000" />
+      <workItem from="1715000937049" duration="3984000" />
     </task>
     <task id="LOCAL-00001" summary="Création de la classe Personnage avec ses attributs et méthodes.">
       <option name="closed" value="true" />

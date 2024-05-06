@@ -13,7 +13,8 @@ public class Gestionpersonnages {
     private static final String LISTER = "SELECT * FROM personnage b ORDER BY b.ID";
     private static final String SUPPRIMER = "DELETE FROM personnage b WHERE b.ID = ?";
 
-    public Gestionpersonnages() {}
+    public Gestionpersonnages() {
+    }
 
     private void cloturer(ResultSet rs, PreparedStatement stmt, Connection con) {
         try {
@@ -111,7 +112,7 @@ public class Gestionpersonnages {
             String nom = "";
             while (rs.next()) {
                 nom = rs.getString(2);
-               Personnage perso = new Personnage(nom);
+                Personnage perso = new Personnage(nom);
                 perso.setManna(rs.getInt(4));
                 perso.setPointDeVie(rs.getInt(3));
                 perso.setId(rs.getInt(1));
@@ -125,5 +126,33 @@ public class Gestionpersonnages {
         return liste;
     }
 
+    /**
+     * Modifie un personnage dans la base de données.
+     *
+     * @param perso Le personnage à modifier avec ses nouveaux attributs.
+     * @return {@code true} si la modification du personnage a réussi, sinon {@code false} .
+     */
 
+    public boolean modifierPersonnage(Personnage perso) {
+        boolean modificationReussie = false; 
+        Connection con = null;
+        PreparedStatement stmt = null;
+        try {
+            con = DaoFactory.getInstance().getConnexion();
+            stmt = con.prepareStatement(MAJ);
+            stmt.setInt(4, perso.getId());
+            stmt.setInt(1, perso.getManna());
+            stmt.setInt(2, perso.getPointDeVie());
+            stmt.setString(3, perso.getName());
+            int resultat = stmt.executeUpdate();
+            if (resultat == 1) {
+                modificationReussie = true;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            cloturer(null, stmt, con);
+        }
+        return modificationReussie;
+    }
 }

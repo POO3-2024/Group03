@@ -14,7 +14,7 @@ import com.google.gson.stream.JsonReader;
 public class ParserConfig {
 
     /**
-     * Fonction qui lis le fichier de config JSON, crée un objet Persistance et l'incrémente avec ce qu'il a lu dans le fichier de config
+     * Méthode qui lis le fichier de config JSON, crée un objet Persistance et l'incrémente avec ce qu'il a lu dans le fichier de config
      * @param fichierConfig Chemin d'accès vers le fichier de config
      * @return Un objet de type Persistance
      * @throws Exception
@@ -26,6 +26,19 @@ public class ParserConfig {
         Persistance persistance = gson.fromJson(jsonReader, Persistance.class);
         jsonReader.close();
         fileReader.close();
+        verif(persistance);
         return persistance;
+    }
+
+    /**
+     * Vérifie si les champs nécessaire du JSON ne sont pas manquant grâce à l'objet Persistance
+     * @param persistance Objet qui contient les infos du fichier de config
+     * @throws Exception
+     */
+    public static void verif(Persistance persistance) throws Exception{
+        if (persistance.getType() == null)
+            throw new Exception("Il manque le champ <ConnectionType>");
+        if (persistance.getPath() == null)
+            throw new Exception("Il manque le champ <DBPath>");
     }
 }

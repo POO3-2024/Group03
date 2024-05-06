@@ -1,8 +1,14 @@
 package be.helha.poo3.projet.javafx.projetjavafx.dbmanager;
 
 import java.io.FileReader;
+import java.io.Reader;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import com.google.gson.Gson;
+import com.google.gson.ReflectionAccessFilter;
 import com.google.gson.stream.JsonReader;
 
 /**
@@ -20,25 +26,30 @@ public class ParserConfig {
      * @throws Exception
      */
     public static Persistance lireConfig(String fichierConfig) throws Exception {
-        FileReader fileReader = new FileReader(fichierConfig, StandardCharsets.UTF_8);
-        JsonReader jsonReader = new JsonReader(fileReader);
-        Gson gson = new Gson();
-        Persistance persistance = gson.fromJson(jsonReader, Persistance.class);
-        jsonReader.close();
-        fileReader.close();
-        verif(persistance);
-        return persistance;
+        try {
+            Path path = Paths.get(fichierConfig);
+            Gson gson = new Gson();
+            Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8);
+            Persistance persistance = gson.fromJson(reader, Persistance.class);
+            reader.close();
+            verif(persistance);
+            return persistance;
+        } catch (Exception e){
+            System.out.println("mesage erreur");
+            System.out.println(e.getMessage() + e.getClass());
+            return null;
+        }
     }
 
     /**
-     * Vérifie si les champs nécessaire du JSON ne sont pas manquant grâce à l'objet Persistance
+     * Vérifie si les champs nécessaire du JSON ne sont pas null grâce à l'objet Persistance
      * @param persistance Objet qui contient les infos du fichier de config
      * @throws Exception
      */
     public static void verif(Persistance persistance) throws Exception{
-        if (persistance.getType() == null)
+        if (persistance.getConnectionType() == null)
             throw new Exception("Il manque le champ <ConnectionType>");
-        if (persistance.getPath() == null)
+        if (persistance.getDBPath() == null)
             throw new Exception("Il manque le champ <DBPath>");
     }
 }

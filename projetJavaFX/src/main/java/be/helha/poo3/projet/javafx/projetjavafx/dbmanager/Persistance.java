@@ -10,32 +10,32 @@ public class Persistance {
     /**
      * Le type de connexion
      */
-    private String type;
+    public String ConnectionType;
     /**
      * Le chemin pour accéder à la DB
      */
-    private String path;
+    public String DBPath;
 
     /**
      * Constructeur de la classe Persitance qui construit juste un objet
      */
     public Persistance() {
-        super();
+
     }
 
     /**
      * Sert à récupérer le type de connexion
      * @return le type de connexion
      */
-    public String getType(){
-        return type;
+    public String getConnectionType(){
+        return ConnectionType;
     }
 
     /**
      * Sert à récupérer le chemin d'accès à la DB
      * @return le chemin d'accès à la DB
      */
-    public String getPath(){
-        return path;
+    public String getDBPath(){
+        return DBPath;
     }
 }

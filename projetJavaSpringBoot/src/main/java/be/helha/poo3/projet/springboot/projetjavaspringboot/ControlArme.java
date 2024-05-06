@@ -61,4 +61,44 @@ public class ControlArme {
             return "<p> GestionRPG : erreur de connexion a la db </p>";
         }
     }
+
+    /**
+     * Renvoie la description détaillée d'une arme selon un identifiant
+     * @param id string identifiant de l'arme
+     * @return message contenant la description du personnage correspondant à l'id ou un message d'erreur
+     * @throws SQLException
+     */
+    @GetMapping("{id}")
+    public String getArme(@PathVariable String id) throws SQLException {
+        DBManager dbManager = new DBManager();
+        Connection con = dbManager.connecter();
+
+        boolean estEntier = id.matches("[0-9]+");
+        if(!estEntier){
+            return "<p> Identifiant n'est pas un entier </p>";
+        }
+
+        if (con == null) {
+            return "<p> Erreur de connexion a la db </p>";
+        }
+
+        try {
+            String query = "SELECT * FROM ARME WHERE id=" + "'" + id + "'";
+            Statement statement = con.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            Arme arme = null;
+            while (resultSet.next()) {
+                arme = new Arme(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3));
+
+            }
+            if (arme == null) {
+                return "<p> Pas d'arme à l'id : " + id + "</p>";
+            } else {
+                return "<p>" + arme.toString() + "</p>";
+            }
+        } catch (SQLException sqlException) {
+            return "<p>" + sqlException.getMessage() + "</p>";
+        }
+
+    }
 }

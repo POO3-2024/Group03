@@ -69,6 +69,11 @@ public class ControlPersonnage {
         DBManager dbManager = new DBManager();
         Connection con = dbManager.connecter();
 
+        boolean estEntier = id.matches("[0-9]+");
+        if(!estEntier){
+            return "<p> Identifiant n'est pas un entier </p>";
+        }
+
         if(con==null){
             return "<p> Erreur de connexion a la db </p>";
         }

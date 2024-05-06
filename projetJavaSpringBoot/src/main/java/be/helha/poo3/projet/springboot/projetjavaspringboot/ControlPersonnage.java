@@ -13,7 +13,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/personnage")
-public class controlPersonnage {
+public class ControlPersonnage {
 
 
     /**

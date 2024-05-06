@@ -3,7 +3,6 @@ package be.helha.poo3.projet.javafx.projetjavafx.personnages;
 public class Personnage {
     private static int nbPerso =0;
 
-
     private int id;
     private String name ;
     private int pointDeVie;
@@ -19,6 +18,11 @@ public class Personnage {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+        nbPerso -= 1;
     }
 
     public String getName() {

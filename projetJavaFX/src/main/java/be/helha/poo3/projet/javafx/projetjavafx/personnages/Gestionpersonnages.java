@@ -60,4 +60,35 @@ public class Gestionpersonnages {
         return ajoutReussi;
     }
 
+    /**
+     * Récupère un personnage à partir de son nom.
+     *
+     * @param nom Le nom du personnage à récupérer.
+     * @return {@code perso}Le personnage correspondant au nom spécifié, ou {@code perso = null} s'il n'existe pas.
+     */
+
+    public Personnage getPersonnage(String nom) {
+        Personnage perso = null;
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            con = DaoFactory.getInstance().getConnexion();
+            ps = con.prepareStatement(GET);
+            ps.setString(1, nom.trim());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                perso = new Personnage(nom);
+                perso.setManna(rs.getInt(4));
+                perso.setPointDeVie(rs.getInt(3));
+                perso.setId(rs.getInt(1));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            cloturer(rs, ps, con);
+        }
+        return perso;
+    }
+
 }

@@ -1,8 +1,11 @@
 package be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager;
 
+import be.helha.poo3.projet.javafx.projetjavafx.dbmanager.DBManager;
 import be.helha.poo3.projet.javafx.projetjavafx.dbmanager.ParserConfig;
 import be.helha.poo3.projet.javafx.projetjavafx.dbmanager.Persistance;
 import org.junit.jupiter.api.Test;
+
+import java.sql.Connection;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,5 +32,16 @@ public class TestDBManager {
         assert persistance != null;
         assertEquals(persistance.getConnectionType(), "DB");
         assertEquals(persistance.getDBPath(), "jdbc:sqlite:C:/sqlite/db/poo3.db");
+    }
+
+    /**
+     * Test de la méthode connexion pour voir si on arrive bien à se connecter à la DB
+     * @throws Throwable
+     */
+    @Test
+    public void testConnexionDB() throws Throwable{
+        DBManager dbManager = DBManager.getInstance();
+        Connection connection = dbManager.getConnexion();
+        assertNotNull(connection);
     }
 }

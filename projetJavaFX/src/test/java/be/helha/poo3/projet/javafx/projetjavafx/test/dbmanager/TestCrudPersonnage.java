@@ -1,13 +1,15 @@
 package be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager;
+import be.helha.poo3.projet.javafx.projetjavafx.dbmanager.DBManager;
 import be.helha.poo3.projet.javafx.projetjavafx.personnages.Gestionpersonnages;
 import be.helha.poo3.projet.javafx.projetjavafx.personnages.Personnage;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Order;
+
 import org.junit.platform.commons.annotation.Testable;
 
 /**
@@ -15,20 +17,15 @@ import org.junit.platform.commons.annotation.Testable;
  *@author Mohamed Samba Demba
  *
  */
-
+@TestMethodOrder(MethodOrderer.MethodName.class)
 public class TestCrudPersonnage {
 
     Gestionpersonnages gestionpersonnages = new Gestionpersonnages();
     private static final List<Personnage> personnages = new ArrayList<>();
 
-    /**
-     * Teste la méthode d'ajout de personnage.
-     *
-     * @throws Throwable Si une exception est levée pendant le test.
-     */
-    @Test
-    @Order(1)
-    public void testAjoutPersonnage() throws Throwable {
+    @BeforeAll
+    // sera exécuté une fois avant toutes les méthodes
+    static void initialisation() throws SQLException {
         // Création de plusieurs personnages
         Personnage alice = new Personnage("Alice");
         Personnage bob = new Personnage("Bob");
@@ -42,7 +39,15 @@ public class TestCrudPersonnage {
         personnages.add(moria);
         personnages.add(diane);
         personnages.add(charle);
-
+    }
+    /**
+     * Teste la méthode d'ajout de personnage.
+     *
+     * @throws Throwable Si une exception est levée pendant le test.
+     */
+    @Test
+    @Order(1)
+    public void testAjoutPersonnage() throws Throwable {
         // Ajout des personnages à la base de donnée
         boolean ajoutResultat = false;
         for (Personnage perso : personnages) {
@@ -50,7 +55,7 @@ public class TestCrudPersonnage {
             assertTrue(ajoutResultat);
         }
         //essaye d'ajoute un perso deja existant
-        ajoutResultat = gestionpersonnages.ajouterPerso(alice);
+        ajoutResultat = gestionpersonnages.ajouterPerso(personnages.get(0));
         assertFalse(ajoutResultat);
     }
 
@@ -67,7 +72,6 @@ public class TestCrudPersonnage {
     public void testListPersonnages() throws Throwable {
         // Récupération des personnages depuis la base de données
         List<Personnage> personnagesResultat = gestionpersonnages.listerPersonnages();
-
         // Vérification que les deux listes ont la même taille
         assertEquals(personnages.size(), personnagesResultat.size());
 
@@ -106,5 +110,24 @@ public class TestCrudPersonnage {
         // Test de récupération d'une personne non existante
         assertNull(gestionpersonnages.getPersonnage("jhon"));
     }
+    /**
+     * Teste la méthode de suppression de personnage.
+     * Supprime chaque personnage de la liste personnages et vérifie que la suppression s'est bien déroulée.
+     * Ensuite, vérifie que la liste des personnages résultants est vide.
+     *
+     * @throws Throwable Si une exception est levée pendant le test.
+     */
+    @Test
+    @Order(4)
+    public void testSupprimerPersonnage() throws Throwable {
+        // Supprimer chaque personnage de la liste personnages et vérifier que la suppression s'est bien déroulée
+        for (Personnage personnage : personnages) {
+            assertTrue(gestionpersonnages.supprimerPersonnage(personnage.getId()));
+        }
 
+        // Récupérer la liste des personnages depuis la base de données
+        List<Personnage> personnagesResultat = gestionpersonnages.listerPersonnages();
+        // Vérifier que la liste des personnages résultants est vide
+        assertTrue(personnagesResultat.isEmpty());
+    }
 }

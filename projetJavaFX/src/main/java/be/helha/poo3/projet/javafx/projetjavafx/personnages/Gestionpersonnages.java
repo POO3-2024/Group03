@@ -17,9 +17,9 @@ import java.util.List;
 public class Gestionpersonnages {
     private static final String GET = "SELECT * FROM personnage b WHERE b.Nom = ?";
     private static final String AJOUT = "INSERT INTO personnage (ID, Nom, PV, Manna) VALUES (?,?,?,?)";
-    private static final String MAJ = "UPDATE personnage SET Manna= ?, PV= ?, name= ? where ID= ?";
+    private static final String MAJ = "UPDATE personnage SET Manna= ?, PV= ?, Nom= ? where ID= ?";
     private static final String LISTER = "SELECT * FROM personnage b ORDER BY b.ID";
-    private static final String SUPPRIMER = "DELETE FROM personnage b WHERE b.ID = ?";
+    private static final String SUPPRIMER = "DELETE FROM personnage WHERE ID = ?";
 
     public Gestionpersonnages() {
     }

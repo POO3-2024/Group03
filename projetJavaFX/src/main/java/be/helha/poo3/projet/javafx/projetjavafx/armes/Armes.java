@@ -1,4 +1,4 @@
-package be.helha.poo3.projet.javafx.projetjavafx.Armes;
+package be.helha.poo3.projet.javafx.projetjavafx.armes;
 
 public class Armes {
     private static int nbArmes = 0;
@@ -7,15 +7,20 @@ public class Armes {
     private  int degats;
 
 
-    public Armes (String nom, int degats){
+    public Armes (String nom){
         this.id = nbArmes++;
         this.nom = nom;
-        this.degats;
+        this.degats = 100;
     }
 
 
     public int getId() {
         return id;
+    }
+
+    public void setId(){
+        this.id = id;
+        nbArmes -=1;
     }
 
     public String getNom() {

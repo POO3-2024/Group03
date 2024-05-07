@@ -104,4 +104,26 @@ public class GestionArmes {
         return  suppressionReussie;
     }
 
+    public boolean modifierArmes(Armes armes){
+        boolean modificationReussie = false;
+        Connection con = null;
+        PreparedStatement stmt = null;
+        try {
+            con = Factory.getInstance().getConnexion();
+            stmt = con.prepareStatement(MAJ);
+            stmt.setString(1, armes.getNom());
+            stmt.setInt(2,armes.getDegats());
+            stmt.setInt(3,armes.getId());
+            int result = stmt.executeUpdate();
+            if (result==1){
+                modificationReussie = true;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            cloturer(null,stmt,con);
+        }
+        return modificationReussie;
+    }
+
 }

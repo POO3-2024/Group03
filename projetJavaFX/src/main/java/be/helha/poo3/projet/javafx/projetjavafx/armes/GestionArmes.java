@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class GestionArmes {
@@ -124,6 +126,30 @@ public class GestionArmes {
             cloturer(null,stmt,con);
         }
         return modificationReussie;
+    }
+
+
+    public List<Armes> ListerArmes(){
+        List<Armes> liste = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = Factory.getInstance().getConnexion();
+            stmt = con.prepareStatement(LISTER);
+            rs = stmt.executeQuery();
+            while (rs.next()){
+                Armes armes = new Armes(rs.getString(2));
+                armes.setId(rs.getInt(1));
+                armes.setDegats(rs.getInt(3));
+                liste.add(armes);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            cloturer(rs,stmt,con);
+        }
+        return liste;
     }
 
 }

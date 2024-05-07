@@ -5,6 +5,7 @@ module be.helha.poo3.projet.javafx.projetjavafx {
     requires org.kordamp.bootstrapfx.core;
     requires com.google.gson;
     requires java.sql;
+    requires testSqliteCon;
 
     opens be.helha.poo3.projet.javafx.projetjavafx to javafx.fxml;
     exports be.helha.poo3.projet.javafx.projetjavafx;

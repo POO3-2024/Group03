@@ -18,7 +18,7 @@ public class Armes {
         return id;
     }
 
-    public void setId(){
+    public void setId(int anInt){
         this.id = id;
         nbArmes -=1;
     }

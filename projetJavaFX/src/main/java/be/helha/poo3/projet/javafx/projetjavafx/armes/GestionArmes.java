@@ -3,6 +3,7 @@ package be.helha.poo3.projet.javafx.projetjavafx.armes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 public class GestionArmes {
@@ -58,6 +59,30 @@ public class GestionArmes {
         }catch (Exception e){
 
         }
+    }
+
+    public Armes getArme(String nom){
+        Armes armes = null;
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            con = Factory.getInstance().getConnexion();
+            stmt = con.prepareStatement(GET);
+            stmt.setString(1,nom);
+            rs = stmt.executeQuery();
+            if(rs.next()){
+                armes = new Armes(rs.getString(2));
+                armes.setId(rs.getInt(1));
+                armes.setDegats(rs.getInt(3));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            cloturer(rs,stmt,con);
+        }
+        return armes;
     }
 
 }

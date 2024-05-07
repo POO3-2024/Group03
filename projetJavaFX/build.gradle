@@ -1,4 +1,4 @@
-plugins {
+  plugins {
   id 'java'
   id 'application'
   id 'org.javamodularity.moduleplugin' version '1.8.12'

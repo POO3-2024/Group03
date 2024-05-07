@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbcd6381-d0d5-4f2b-b5b7-a68739728ddd" name="Changes" comment="" />
+    <list default="true" id="cbcd6381-d0d5-4f2b-b5b7-a68739728ddd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/be/helha/poo3/projet/javafx/projetjavafx/lister-arme.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/be/helha/poo3/projet/javafx/projetjavafx/lister-arme.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/be/helha/poo3/projet/javafx/projetjavafx/lister-personnage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/be/helha/poo3/projet/javafx/projetjavafx/lister-personnage.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +41,7 @@
       <list>
         <option value="package.json" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -138,6 +143,8 @@
       <updated>1713943099109</updated>
       <workItem from="1713943100245" duration="552000" />
       <workItem from="1715001234319" duration="7597000" />
+      <workItem from="1715081222695" duration="7324000" />
+      <workItem from="1715093393527" duration="1069000" />
     </task>
     <servers />
   </component>

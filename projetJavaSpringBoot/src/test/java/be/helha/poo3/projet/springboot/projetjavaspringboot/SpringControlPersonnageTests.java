@@ -90,7 +90,7 @@ class SpringControlPersonnageTests {
     }
 
     /**
-     * Verifie si l'api renvoie un message lorsque l'identifiant passer en paramètre n'est pas un paramètre
+     * Verifie si l'api renvoie un message lorsque l'identifiant du personnage passer en paramètre n'est pas un entier
      * @throws Exception
      */
     @Test

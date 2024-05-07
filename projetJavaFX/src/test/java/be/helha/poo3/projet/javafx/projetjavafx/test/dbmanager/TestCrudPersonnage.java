@@ -8,6 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Order;
+import org.junit.platform.commons.annotation.Testable;
 
 /**
  *
@@ -75,7 +76,6 @@ public class TestCrudPersonnage {
             // Récupération des personnages des deux listes
             Personnage personnageAttendu = personnages.get(i);
             Personnage personnageResultat = personnagesResultat.get(i);
-
             // Comparaison des  personnages
             assertEquals(personnageResultat.getName(),personnageAttendu.getName());
             assertEquals(personnageResultat.getId(),personnageAttendu.getId());
@@ -83,4 +83,28 @@ public class TestCrudPersonnage {
             assertEquals(personnageResultat.getPointDeVie(),personnageAttendu.getPointDeVie());
         }
     }
+
+    /**
+     * Teste la méthode recherchePersonnages() de la classe Gestionpersonnages.
+     * Cette méthode recherche une personnee de la base de données et le compare avec les personnages déjà présents dans la liste personnages.
+     *
+     * @throws Throwable si une exception est levée pendant le test.
+     */
+
+    @Test
+    @Order(3)
+    public void testRecherchePersonnages() throws Throwable {
+        // On parcourt la liste des personnages et on les recherche une par une
+        for (Personnage personnage : personnages) {
+            Personnage personnageResultat = gestionpersonnages.getPersonnage(personnage.getName());
+            //Test du resulta
+            assertEquals(personnageResultat.getName(),personnage.getName());
+            assertEquals(personnageResultat.getId(),personnage.getId());
+            assertEquals(personnageResultat.getManna(),personnage.getManna());
+            assertEquals(personnageResultat.getPointDeVie(),personnage.getPointDeVie());
+        }
+        // Test de récupération d'une personne non existante
+        assertNull(gestionpersonnages.getPersonnage("jhon"));
+    }
+
 }

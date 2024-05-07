@@ -85,4 +85,23 @@ public class GestionArmes {
         return armes;
     }
 
+    public boolean supprimerArmes(int id){
+        boolean suppressionReussie = false;
+        Connection con = null;
+        PreparedStatement stmt = null;
+        try{
+            con = Factory.getInstance().getConnexion();
+            stmt = con.prepareStatement(SUPPRIMER);
+            stmt.setInt(1,id);
+            int nb = stmt.executeUpdate();
+            if (nb==1)
+                suppressionReussie = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            cloturer(null,stmt,con);
+        }
+        return  suppressionReussie;
+    }
+
 }

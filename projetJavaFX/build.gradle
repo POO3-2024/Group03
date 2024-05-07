@@ -41,6 +41,7 @@ dependencies {
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
   implementation("com.google.code.gson:gson:2.10.1")
   implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.42.0.0'
+  implementation "poo3Projet.jar"
 }
 
 test {
@@ -57,3 +58,16 @@ jlink {
 jlinkZip {
   group = 'distribution'
 }
+
+  jar {
+    // Inclure les classes compilées dans le JAR
+    from sourceSets.main.output.classesDirs
+
+    include 'be/helha/poo3/projet/javafx/projetjavafx/armes/Armes.class'
+    include 'be/helha/poo3/projet/javafx/projetjavafx/armes/GestionArmes.class'
+    include 'be/helha/poo3/projet/javafx/projetjavafx/dbmanager/DBManager.class'
+    include 'be/helha/poo3/projet/javafx/projetjavafx/dbmanager/Persistance.class'
+    include 'be/helha/poo3/projet/javafx/projetjavafx/dbmanager/ParserConfig.class'
+    include 'be/helha/poo3/projet/javafx/projetjavafx/personnages/Personnage.class'
+    include 'be/helha/poo3/projet/javafx/projetjavafx/personnages/Gestionpersonnages.class'
+  }

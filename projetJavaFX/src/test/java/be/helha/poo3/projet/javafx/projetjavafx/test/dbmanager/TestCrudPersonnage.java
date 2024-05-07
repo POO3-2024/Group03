@@ -17,7 +17,7 @@ import org.junit.platform.commons.annotation.Testable;
  *@author Mohamed Samba Demba
  *
  */
-@TestMethodOrder(MethodOrderer.MethodName.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestCrudPersonnage {
 
     Gestionpersonnages gestionpersonnages = new Gestionpersonnages();
@@ -111,6 +111,35 @@ public class TestCrudPersonnage {
         assertNull(gestionpersonnages.getPersonnage("jhon"));
     }
     /**
+     * Teste la méthode de modification de personnages.
+     * Modifie un personnage de la liste personnages, vérifie que la modification s'est bien déroulée
+     * et compare les attributs modifiés avec les attributs du personnage résultant.
+     *
+     * @throws Throwable Si une exception est levée pendant le test.
+     */
+    @Test
+    @Order(4)
+    public void testModifierPersonnages() throws Throwable {
+        // Obtient le nom du personnage à modifier
+        String name = personnages.get(1).getName();
+        // Récupère le personnage à modifier
+        Personnage personnageModifier = gestionpersonnages.getPersonnage(name);
+        // Modifie les attributs du personnage
+        personnageModifier.setManna(75);
+        personnageModifier.setPointDeVie(8);
+        // enregistrer la modification dans la base de données
+        boolean result = gestionpersonnages.modifierPersonnage(personnageModifier);
+        // Vérifie que la modification s'est déroulée avec succès
+        assertTrue(result);
+
+        // Récupère le personnage après modification depuis la base de données
+        Personnage personnageResultat = gestionpersonnages.getPersonnage(name);
+        // Compare les attributs modifiés avec les attributs du personnage résultant
+        assertEquals(personnageResultat.getManna(), personnageModifier.getManna());
+        assertEquals(personnageResultat.getPointDeVie(), personnageModifier.getPointDeVie());
+    }
+
+    /**
      * Teste la méthode de suppression de personnage.
      * Supprime chaque personnage de la liste personnages et vérifie que la suppression s'est bien déroulée.
      * Ensuite, vérifie que la liste des personnages résultants est vide.
@@ -118,7 +147,7 @@ public class TestCrudPersonnage {
      * @throws Throwable Si une exception est levée pendant le test.
      */
     @Test
-    @Order(4)
+    @Order(5)
     public void testSupprimerPersonnage() throws Throwable {
         // Supprimer chaque personnage de la liste personnages et vérifier que la suppression s'est bien déroulée
         for (Personnage personnage : personnages) {

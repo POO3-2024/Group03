@@ -1,6 +1,8 @@
 package be.helha.poo3.projet.javafx.projetjavafx.personnages;
 
 
+import be.helha.poo3.projet.javafx.projetjavafx.dbmanager.DBManager;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -50,8 +52,9 @@ public class Gestionpersonnages {
         boolean ajoutReussi = false;
         Connection con = null;
         PreparedStatement stmt = null;
+        if (getPersonnage(perso.getName())!= null) return false;
         try {
-            con = Factory.getInstance().getConnexion();
+            con = DBManager.getInstance().getConnexion();
             stmt = con.prepareStatement(AJOUT);
             stmt.setInt(1, perso.getId());
             stmt.setString(2, perso.getName().trim());
@@ -82,7 +85,7 @@ public class Gestionpersonnages {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            con = Factory.getInstance().getConnexion();
+            con = DBManager.getInstance().getConnexion();
             stmt = con.prepareStatement(GET);
             stmt.setString(1, nom.trim());
             rs = stmt.executeQuery();
@@ -112,7 +115,7 @@ public class Gestionpersonnages {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            con = Factory.getInstance().getConnexion();
+            con = DBManager.getInstance().getConnexion();
             stmt = con.prepareStatement(LISTER);
             rs = stmt.executeQuery();
             String nom = "";
@@ -144,7 +147,7 @@ public class Gestionpersonnages {
         Connection con = null;
         PreparedStatement stmt = null;
         try {
-            con = Factory.getInstance().getConnexion();
+            con = DBManager.getInstance().getConnexion();
             stmt = con.prepareStatement(MAJ);
             stmt.setInt(4, perso.getId());
             stmt.setInt(1, perso.getManna());
@@ -174,7 +177,7 @@ public class Gestionpersonnages {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            con = Factory.getInstance().getConnexion();
+            con = DBManager.getInstance().getConnexion();
             stmt = con.prepareStatement(SUPPRIMER);
             stmt.setInt(1, id);
             int nb = stmt.executeUpdate();

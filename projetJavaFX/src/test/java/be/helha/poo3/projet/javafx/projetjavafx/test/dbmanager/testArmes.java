@@ -31,6 +31,7 @@ public class testArmes {
         armes.add(lance);
         armes.add(hache);
         armes.add(pistolet);
+        
     }
 
     @Test

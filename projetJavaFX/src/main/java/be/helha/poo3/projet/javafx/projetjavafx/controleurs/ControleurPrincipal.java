@@ -87,7 +87,6 @@ public class ControleurPrincipal implements Initializable {
      * @throws IOException Si une erreur d'entrée-sortie se produit lors du chargement de la vue.
      */
     public void openVuePersonnage() throws IOException {
-        this.closseThisWindows();
         this.goTo("/Vues/lister-personnage.fxml");
     }
 
@@ -100,26 +99,16 @@ public class ControleurPrincipal implements Initializable {
     }
 
     /**
-     * Ferme la fenêtre principale de l'application.
-     */
-    private void closseThisWindows(){
-        // Fermer la fenêtre principale
-        Stage currentStage = (Stage) btPersonnage.getScene().getWindow();
-        currentStage.hide();
-    }
-
-    /**
      * Navigue vers une nouvelle vue spécifiée par le chemin du fichier FXML.
      *
      * @param path Le chemin du fichier FXML de la vue à afficher.
      * @throws IOException Si une erreur d'entrée-sortie se produit lors du chargement de la vue.
      */
     private void goTo(String path) throws IOException {
+        Stage stagePrincipal = (Stage) btPersonnage.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         Parent root = loader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setResizable(false);
-        stage.show();
+        stagePrincipal.setScene(new Scene(root));
+        stagePrincipal.show();
     }
 }

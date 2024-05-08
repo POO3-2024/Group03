@@ -61,7 +61,7 @@ public class ControleurAddPersonnage implements Initializable {
     private void initBtAjouter() {
         btAjouter.setOnAction(e -> {
             try {
-                this.addPersonnage();
+                this.checkValidity();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
@@ -72,19 +72,100 @@ public class ControleurAddPersonnage implements Initializable {
      * Ajoute un nouveau personnage à la base de données.
      *
      * @throws IOException si une erreur d'entrée/sortie se produit lors de l'ajout du personnage.
+     *
+     * @return {@code true} si le personnage a bien etais ajouter sinom {@code false}
      */
-    private void addPersonnage() throws IOException {
-       Personnage persoToAdd = new Personnage(tfName.getText());
+    private boolean addPersonnage(Personnage perso) throws IOException {
+        return gestionpersonnages.ajouterPerso(perso);
+    }
+    /**
+     *
+     * Vérifie que tous les champs sont remplis, que les valeurs de points de vie et de mana sont des entiers positifs,
+     * et que le nom ne contient que des caractères non numériques avant d'ajoute un nouveau personnage à la base de données.
+     *
+     * @throws IOException si une erreur d'entrée/sortie se produit lors de l'ajout du personnage.
+     */
+    private void checkValidity() throws IOException {
+        String name = tfName.getText();
+        String manaText = tfManna.getText();
+        String pvText = tfPv.getText();
 
-        // Convertir les chaînes en int
-        int mana = Integer.parseInt(tfManna.getText());
-        int pv = Integer.parseInt(tfPv.getText());
+        if (!allFieldsFilled(name, manaText, pvText)) {
+            System.out.println("Veuillez remplir tous les champs.");
+            return;
+        }
 
-        persoToAdd.setPointDeVie(pv);
-        persoToAdd.setManna(mana);
+        int mana = parseInteger(manaText);
+        int pv = parseInteger(pvText);
 
-        gestionpersonnages.ajouterPerso(persoToAdd);
-        this.openVueListPersonnage();
+        if (!(mana >= 0 && pv >= 0)) {
+            System.out.println("Les valeurs doivent être des nombres positifs.");
+            return;
+        }
+        if(containsOnlyDigits(name)){
+            System.out.println("Le nom ne peut contenir que des chiffres.");
+            return;
+        }
+
+        Personnage persoToAdd = new Personnage(name);
+
+        if (persoToAdd.getPointDeVie() < pv){
+            System.out.println("les points de vie ne peuvent pas depasés "+ persoToAdd.getPointDeVie()+".");
+            return;
+        }else if (persoToAdd.getManna() < mana){
+            System.out.println("le manna ne peuvent pas depasés "+ persoToAdd.getManna()+".");
+            return;
+        }else {
+            persoToAdd.setPointDeVie(pv);
+            persoToAdd.setManna(mana);
+        }
+
+        if (!(this.addPersonnage(persoToAdd))){
+            System.out.println("Erreur de l'ajouter de personnage.");
+        }
+        openVueListPersonnage();
+    }
+
+    /**
+     * Vérifie si tous les champs sont remplis.
+     *
+     * @param name     le nom du personnage.
+     * @param manaText le texte représentant le mana du personnage.
+     * @param pvText   le texte représentant les points de vie du personnage.
+     * @return {@code true} si tous les champs sont remplis, sinon {@code false}.
+     */
+    private boolean allFieldsFilled(String name, String manaText, String pvText) {
+        return !name.isEmpty() && !manaText.isEmpty() && !pvText.isEmpty() ;
+    }
+
+    /**
+     * Convertit une chaîne de caractères en entier.
+     *
+     * @param text la chaîne de caractères à convertir.
+     * @return {@code int} l'entier représenté par la chaîne, ou {@code -1} si la chaîne n'est pas un entier valide.
+     */
+    private int parseInteger(String text) {
+        try {
+            return Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            System.out.println("Veuillez entrer un nombre valide.");
+            return -1;
+        }
+    }
+
+    /**
+     * Vérifie si une chaîne de caractères contient uniquement des chiffres.
+     *
+     * @param text la chaîne de caractères à vérifier.
+     * @return {@code true} si la chaîne contient uniquement des chiffres, sinon {@code false}.
+     */
+    private boolean containsOnlyDigits(String text) {
+        for (char c : text.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -106,19 +187,8 @@ public class ControleurAddPersonnage implements Initializable {
      * @throws IOException si une erreur d'entrée/sortie se produit lors de l'ouverture de la vue.
      */
     private void openVueListPersonnage() throws IOException {
-        this.closseThisWindows();
         this.goTo("/Vues/lister-personnage.fxml");
     }
-
-    /**
-     * Ferme la vue actuelle.
-     */
-    private void closseThisWindows(){
-        // Fermer la fenêtre principale
-        Stage currentStage = (Stage) btAjouter.getScene().getWindow();
-        currentStage.close();
-    }
-
 
     /**
      * Charge et affiche une nouvelle vue.
@@ -127,13 +197,10 @@ public class ControleurAddPersonnage implements Initializable {
      * @throws IOException si une erreur d'entrée/sortie se produit lors de la lecture de la vue.
      */
     private void goTo(String path) throws IOException {
-
+        Stage stagePrincipal = (Stage) btAjouter.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         Parent root = loader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setResizable(false);
-        stage.show();
+        stagePrincipal.setScene(new Scene(root));
+        stagePrincipal.show();
     }
-
 }

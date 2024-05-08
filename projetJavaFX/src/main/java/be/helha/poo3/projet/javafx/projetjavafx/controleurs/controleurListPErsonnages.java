@@ -112,7 +112,6 @@ public class controleurListPErsonnages implements Initializable {
      * @throws IOException si une erreur d'entrée/sortie se produit lors de l'ouverture de la vue.
      */
     public void openVueAddPersonnage() throws IOException {
-        this.closseThisWindows();
         this.goTo("/Vues/ajouter-personnage.fxml");
     }
 
@@ -122,18 +121,8 @@ public class controleurListPErsonnages implements Initializable {
      * @throws IOException si une erreur d'entrée/sortie se produit lors de l'ouverture de la vue.
      */
     private void openVueAcceille() throws IOException {
-        this.closseThisWindows();
         this.mettreAJourListePersonnages();
         this.goTo("/Vues/acceuil.fxml");
-    }
-
-    /**
-     * Ferme la vue actuelle
-     * */
-    private void closseThisWindows(){
-        // Fermer la fenêtre principale
-        Stage currentStage = (Stage) btAddPerson.getScene().getWindow();
-        currentStage.close();
     }
 
     /**
@@ -143,13 +132,10 @@ public class controleurListPErsonnages implements Initializable {
      * @throws IOException si une erreur d'entrée/sortie se produit lors de la lecture de la vue.
      */
     private void goTo(String path) throws IOException {
-
+        Stage stagePrincipal = (Stage) btAddPerson.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         Parent root = loader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setResizable(false);
-        stage.show();
+        stagePrincipal.setScene(new Scene(root));
+        stagePrincipal.show();
     }
-
 }

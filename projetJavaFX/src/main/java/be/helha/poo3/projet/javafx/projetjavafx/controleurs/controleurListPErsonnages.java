@@ -10,9 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -20,21 +18,37 @@ import java.util.ResourceBundle;
 
 /**
  *
+ * Contrôleur pour la vue listerPersonnages.
+ * Ce contrôleur récupère la liste des personnes dans la base de données et les affiche.
  *@author Mohamed Samba Demba
  *
  */
 public class controleurListPErsonnages implements Initializable {
-
+    /**
+     * Boutons de l'interface utilisateur pour naviguer vers d'autres vues.
+     */
     @FXML
     public Button btAddPerson ,btRetour;
-    @FXML
-    public VBox vbNom, vbPv, vbMana;
+    /**
+     * Labels affichant le nom, pv et manna des personnages dans l'application.
+     */
     @FXML
     public ListView lvNom, lvPv, lvMana;
-
+    /**
+     * Gestionnaire des personnages de l'application.
+     */
     private final Gestionpersonnages gestionpersonnages = new Gestionpersonnages();
+    /**
+     * Liste des personnages de l'application.
+     */
     private List<Personnage> personnages;
 
+    /**
+     * Initialise le contrôleur.
+     *
+     * @param url            L'emplacement utilisé pour résoudre les chemins relatifs pour l'objet racine, ou null si l'emplacement n'est pas connu.
+     * @param resourceBundle Les ressources localisées utilisées par cet objet.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.mettreAJourListePersonnages();
@@ -42,6 +56,9 @@ public class controleurListPErsonnages implements Initializable {
         this.initBtRetour();
     }
 
+    /**
+     * Met à jour la liste des personnages dans l'affichage.
+     */
     public void mettreAJourListePersonnages() {
         lvNom.getItems().clear();
         lvPv.getItems().clear();
@@ -49,7 +66,9 @@ public class controleurListPErsonnages implements Initializable {
         this.listerPersonnages(); // Réaffiche la liste des personnages
     }
 
-
+    /**
+     * Initialise le gestionnaire d'événements pour le bouton de retour.
+     */
     private void initBtRetour() {
         btRetour.setOnAction(e -> {
             try {
@@ -60,6 +79,9 @@ public class controleurListPErsonnages implements Initializable {
         });
     }
 
+    /**
+     * Initialise le gestionnaire d'événements pour le bouton d'ajout de personnage.
+     */
     private void initBtAddPerson() {
         btAddPerson.setOnAction(e -> {
         try {
@@ -70,6 +92,9 @@ public class controleurListPErsonnages implements Initializable {
     });
     }
 
+    /**
+     * Liste les personnages et les affiche dans la vue.
+     */
     private void listerPersonnages() {
          personnages = gestionpersonnages.listerPersonnages();
          for (Personnage personnage : personnages) {
@@ -81,23 +106,42 @@ public class controleurListPErsonnages implements Initializable {
 
     }
 
+    /**
+     * Ouvre la vue pour ajouter un personnage.
+     *
+     * @throws IOException si une erreur d'entrée/sortie se produit lors de l'ouverture de la vue.
+     */
     public void openVueAddPersonnage() throws IOException {
         this.closseThisWindows();
         this.goTo("/Vues/ajouter-personnage.fxml");
     }
 
+    /**
+     * Ouvre la vue d'accueil.
+     *
+     * @throws IOException si une erreur d'entrée/sortie se produit lors de l'ouverture de la vue.
+     */
     private void openVueAcceille() throws IOException {
         this.closseThisWindows();
         this.mettreAJourListePersonnages();
         this.goTo("/Vues/acceuil.fxml");
     }
 
+    /**
+     * Ferme la vue actuelle
+     * */
     private void closseThisWindows(){
         // Fermer la fenêtre principale
         Stage currentStage = (Stage) btAddPerson.getScene().getWindow();
         currentStage.close();
     }
 
+    /**
+     * Charge et affiche une nouvelle vue.
+     *
+     * @param path le chemin de la vue à charger.
+     * @throws IOException si une erreur d'entrée/sortie se produit lors de la lecture de la vue.
+     */
     private void goTo(String path) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));

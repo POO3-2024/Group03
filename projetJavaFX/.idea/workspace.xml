@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbcd6381-d0d5-4f2b-b5b7-a68739728ddd" name="Changes" comment="ajout du bouton retour vers accueille">
+    <list default="true" id="cbcd6381-d0d5-4f2b-b5b7-a68739728ddd" name="Changes" comment="ajout du bouton retour vers listePersonnages et des méthodes pour ajouter un personnage dans la base de données">
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/ControleurAddPersonnage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/ControleurAddPersonnage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/ControleurPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/ControleurPrincipal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/controleurListPErsonnages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/controleurListPErsonnages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/personnages/Personnage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/personnages/Personnage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Vues/ajouter-personnage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vues/ajouter-personnage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +241,7 @@
       <workItem from="1715081222695" duration="7324000" />
       <workItem from="1715093393527" duration="1069000" />
       <workItem from="1715098318657" duration="13962000" />
-      <workItem from="1715179938849" duration="7883000" />
+      <workItem from="1715179938849" duration="10570000" />
     </task>
     <task id="LOCAL-00001" summary="creation de la class 'TestCrudPersonnage' ainsi que la methode 'testAjoutPersonnage'">
       <option name="closed" value="true" />
@@ -308,7 +307,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715185735994</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="ajout du bouton retour vers listePersonnages et des méthodes pour ajouter un personnage dans la base de données">
+      <option name="closed" value="true" />
+      <created>1715188261330</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715188261330</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,6 +341,7 @@
     <MESSAGE value="creation du 'ControleurPrincipal', du 'controleurAddPersonnage', du controleurListPErsonnages, ainsi que de les methode suivates : 'openVueAddPersonnage()', 'closseThisWindows', 'goTo'" />
     <MESSAGE value="ajout de la methode listPers" />
     <MESSAGE value="ajout du bouton retour vers accueille" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout du bouton retour vers accueille" />
+    <MESSAGE value="ajout du bouton retour vers listePersonnages et des méthodes pour ajouter un personnage dans la base de données" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout du bouton retour vers listePersonnages et des méthodes pour ajouter un personnage dans la base de données" />
   </component>
 </project>

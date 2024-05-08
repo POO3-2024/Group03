@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.helha.poo3.projet.javafx.projetjavafx.ListerPersonnage">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.helha.poo3.projet.javafx.projetjavafx.controleurs.controleurListPErsonnages">
    <children>
       <Label alignment="CENTER" prefHeight="60.0" prefWidth="607.0" style="-fx-background-color: grey;" text="LISTE DES PERSONNAGES" textAlignment="CENTER">
          <font>
@@ -56,6 +56,6 @@
          </children>
       </HBox>
       <Button layoutX="14.0" layoutY="18.0" mnemonicParsing="false" text="&lt;" />
-      <Button layoutX="-1.0" layoutY="374.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="607.0" text="Ajouter un personnage" />
+      <Button fx:id="btAddPerson" layoutX="-1.0" layoutY="374.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="607.0" text="Ajouter un personnage" />
    </children>
 </AnchorPane>

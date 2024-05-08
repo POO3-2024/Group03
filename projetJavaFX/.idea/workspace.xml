@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cbcd6381-d0d5-4f2b-b5b7-a68739728ddd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/armes/GestionArmes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/armes/GestionArmes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/be/helha/poo3/projet/javafx/projetjavafx/test/dbmanager/testArmes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/be/helha/poo3/projet/javafx/projetjavafx/test/dbmanager/testArmes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,7 +248,7 @@
       <workItem from="1715093393527" duration="1069000" />
       <workItem from="1715097601569" duration="126000" />
       <workItem from="1715097738745" duration="2207000" />
-      <workItem from="1715175001826" duration="3799000" />
+      <workItem from="1715175001826" duration="4722000" />
     </task>
     <task id="LOCAL-00001" summary="creation de la class 'TestCrudPersonnage' ainsi que la methode 'testAjoutPersonnage'">
       <option name="closed" value="true" />

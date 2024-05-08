@@ -32,7 +32,6 @@ public class GestionArmes {
         try{
             con = DBManager.getInstance().getConnexion();
             stmt = con.prepareStatement(AJOUT);
-
             stmt.setString(1,armes.getNom());
             stmt.setInt(2,armes.getDegats());
 

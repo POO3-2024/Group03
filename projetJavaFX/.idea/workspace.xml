@@ -4,29 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbcd6381-d0d5-4f2b-b5b7-a68739728ddd" name="Changes" comment="creation de la methode 'testModifierPersonnages'">
-      <change afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/Application/ApplicationGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/ControleurAddPersonnage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/ControleurPrincipal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/controleurListPErsonnages.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/main.java" afterDir="false" />
+    <list default="true" id="cbcd6381-d0d5-4f2b-b5b7-a68739728ddd" name="Changes" comment="creation du 'ControleurPrincipal', du 'controleurAddPersonnage', du controleurListPErsonnages, ainsi que de les methode suivates : 'openVueAddPersonnage()', 'closseThisWindows', 'goTo'">
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/HelloApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/armes/GestionArmes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/armes/GestionArmes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/be/helha/poo3/projet/javafx/projetjavafx/acceuil.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vues/acceuil.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/be/helha/poo3/projet/javafx/projetjavafx/ajouter-arme.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vues/ajouter-arme.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/be/helha/poo3/projet/javafx/projetjavafx/ajouter-personnage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vues/ajouter-personnage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/be/helha/poo3/projet/javafx/projetjavafx/attaquer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vues/attaquer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/be/helha/poo3/projet/javafx/projetjavafx/fiche-arme.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vues/fiche-arme.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/be/helha/poo3/projet/javafx/projetjavafx/fiche-personnage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vues/fiche-personnage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/be/helha/poo3/projet/javafx/projetjavafx/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vues/hello-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/be/helha/poo3/projet/javafx/projetjavafx/lister-arme.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vues/lister-arme.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/be/helha/poo3/projet/javafx/projetjavafx/lister-personnage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vues/lister-personnage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/controleurListPErsonnages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/controleurListPErsonnages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Vues/lister-personnage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vues/lister-personnage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +81,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.TestCrudPersonnage.testAjoutPersonnage.executor": "Run",
     "Gradle.TestDBManager.executor": "Run",
     "Gradle.projetJavaFX [:ApplicationGame.main()].executor": "Run",
     "Gradle.projetJavaFX [:HelloApplication.main()].executor": "Run",
@@ -186,7 +171,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="TestCrudPersonnage.modifierPersonnage" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TestCrudPersonnage.testAjoutPersonnage" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -199,7 +184,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager.TestCrudPersonnage.modifierPersonnage&quot;" />
+            <option value="&quot;be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager.TestCrudPersonnage.testAjoutPersonnage&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -212,11 +197,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.TestCrudPersonnage.testAjoutPersonnage" />
         <item itemvalue="Application.main" />
         <item itemvalue="Application.ApplicationGame" />
         <item itemvalue="Application.HelloApplication" />
         <item itemvalue="Gradle.TestCrudPersonnage" />
-        <item itemvalue="Gradle.TestCrudPersonnage.modifierPersonnage" />
       </list>
     </recent_temporary>
   </component>
@@ -242,6 +227,7 @@
       <workItem from="1715081222695" duration="7324000" />
       <workItem from="1715093393527" duration="1069000" />
       <workItem from="1715098318657" duration="13962000" />
+      <workItem from="1715179938849" duration="1897000" />
     </task>
     <task id="LOCAL-00001" summary="creation de la class 'TestCrudPersonnage' ainsi que la methode 'testAjoutPersonnage'">
       <option name="closed" value="true" />
@@ -283,7 +269,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715096473437</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="creation du 'ControleurPrincipal', du 'controleurAddPersonnage', du controleurListPErsonnages, ainsi que de les methode suivates : 'openVueAddPersonnage()', 'closseThisWindows', 'goTo'">
+      <option name="closed" value="true" />
+      <created>1715180562982</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715180562982</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,6 +289,7 @@
     <MESSAGE value="creation de la methode 'testRecherchePersonnages'" />
     <MESSAGE value="creation de la methode 'testSupprimerPersonnage' ainsi que de la correction de la requête MAJ et  SUPPRIMER" />
     <MESSAGE value="creation de la methode 'testModifierPersonnages'" />
-    <option name="LAST_COMMIT_MESSAGE" value="creation de la methode 'testModifierPersonnages'" />
+    <MESSAGE value="creation du 'ControleurPrincipal', du 'controleurAddPersonnage', du controleurListPErsonnages, ainsi que de les methode suivates : 'openVueAddPersonnage()', 'closseThisWindows', 'goTo'" />
+    <option name="LAST_COMMIT_MESSAGE" value="creation du 'ControleurPrincipal', du 'controleurAddPersonnage', du controleurListPErsonnages, ainsi que de les methode suivates : 'openVueAddPersonnage()', 'closseThisWindows', 'goTo'" />
   </component>
 </project>

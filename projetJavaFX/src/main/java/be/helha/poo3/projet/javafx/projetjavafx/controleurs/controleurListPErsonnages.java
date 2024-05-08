@@ -4,47 +4,70 @@ import be.helha.poo3.projet.javafx.projetjavafx.personnages.Gestionpersonnages;
 import be.helha.poo3.projet.javafx.projetjavafx.personnages.Personnage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
-import java.util.function.Function;
+import java.util.ResourceBundle;
 
 /**
  *
  *@author Mohamed Samba Demba
  *
  */
-public class controleurListPErsonnages {
+public class controleurListPErsonnages implements Initializable {
 
     @FXML
-    public Button btAddPerson;
+    public Button btAddPerson ,btRetour;
     @FXML
     public VBox vbNom, vbPv, vbMana;
     @FXML
     public ListView lvNom, lvPv, lvMana;
 
     private final Gestionpersonnages gestionpersonnages = new Gestionpersonnages();
-
-
     private List<Personnage> personnages;
 
-    public void initialize() {
-        this.listerPersonnages();
-        btAddPerson.setOnAction(e -> {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.mettreAJourListePersonnages();
+        this.initBtAddPerson();
+        this.initBtRetour();
+    }
+
+    public void mettreAJourListePersonnages() {
+        lvNom.getItems().clear();
+        lvPv.getItems().clear();
+        lvMana.getItems().clear();
+        this.listerPersonnages(); // Réaffiche la liste des personnages
+    }
+
+
+    private void initBtRetour() {
+        btRetour.setOnAction(e -> {
             try {
-                openVueAddPersonnage();
+                openVueAcceille();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         });
+    }
+
+    private void initBtAddPerson() {
+        btAddPerson.setOnAction(e -> {
+        try {
+            openVueAddPersonnage();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    });
     }
 
     private void listerPersonnages() {
@@ -63,6 +86,11 @@ public class controleurListPErsonnages {
         this.goTo("/Vues/ajouter-personnage.fxml");
     }
 
+    private void openVueAcceille() throws IOException {
+        this.closseThisWindows();
+        this.mettreAJourListePersonnages();
+        this.goTo("/Vues/acceuil.fxml");
+    }
 
     private void closseThisWindows(){
         // Fermer la fenêtre principale
@@ -75,10 +103,9 @@ public class controleurListPErsonnages {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         Parent root = loader.load();
         Stage stage = new Stage();
-        stage.setTitle("Liste des personnages");
-        stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(new Scene(root));
         stage.setResizable(false);
-        stage.showAndWait();
+        stage.show();
     }
+
 }

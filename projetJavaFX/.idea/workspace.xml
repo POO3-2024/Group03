@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbcd6381-d0d5-4f2b-b5b7-a68739728ddd" name="Changes" comment="creation du 'ControleurPrincipal', du 'controleurAddPersonnage', du controleurListPErsonnages, ainsi que de les methode suivates : 'openVueAddPersonnage()', 'closseThisWindows', 'goTo'">
+    <list default="true" id="cbcd6381-d0d5-4f2b-b5b7-a68739728ddd" name="Changes" comment="ajout de la methode listPers">
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/ControleurPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/ControleurPrincipal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/controleurListPErsonnages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/controleurListPErsonnages.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Vues/lister-personnage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Vues/lister-personnage.fxml" afterDir="false" />
     </list>
@@ -89,7 +90,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/controlerPersonnage",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/projetJava/projetJavaFX",
+    "last_opened_file_path": "C:/Users/moham/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-graphics/19.0.2/1115b4c69577f621e8ec0a52b925d267c1c1b4ec/javafx-graphics-19.0.2-win.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -227,7 +228,7 @@
       <workItem from="1715081222695" duration="7324000" />
       <workItem from="1715093393527" duration="1069000" />
       <workItem from="1715098318657" duration="13962000" />
-      <workItem from="1715179938849" duration="1897000" />
+      <workItem from="1715179938849" duration="5472000" />
     </task>
     <task id="LOCAL-00001" summary="creation de la class 'TestCrudPersonnage' ainsi que la methode 'testAjoutPersonnage'">
       <option name="closed" value="true" />
@@ -277,11 +278,30 @@
       <option name="project" value="LOCAL" />
       <updated>1715180562982</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="ajout de la methode listPers">
+      <option name="closed" value="true" />
+      <created>1715182073814</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715182073814</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="creation de la class 'TestCrudPersonnage' ainsi que la methode 'testAjoutPersonnage'" />
@@ -290,6 +310,7 @@
     <MESSAGE value="creation de la methode 'testSupprimerPersonnage' ainsi que de la correction de la requête MAJ et  SUPPRIMER" />
     <MESSAGE value="creation de la methode 'testModifierPersonnages'" />
     <MESSAGE value="creation du 'ControleurPrincipal', du 'controleurAddPersonnage', du controleurListPErsonnages, ainsi que de les methode suivates : 'openVueAddPersonnage()', 'closseThisWindows', 'goTo'" />
-    <option name="LAST_COMMIT_MESSAGE" value="creation du 'ControleurPrincipal', du 'controleurAddPersonnage', du controleurListPErsonnages, ainsi que de les methode suivates : 'openVueAddPersonnage()', 'closseThisWindows', 'goTo'" />
+    <MESSAGE value="ajout de la methode listPers" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout de la methode listPers" />
   </component>
 </project>

@@ -66,18 +66,15 @@ public class ControleurPrincipal implements Initializable {
     private void closseThisWindows(){
         // Fermer la fenêtre principale
         Stage currentStage = (Stage) btPersonnage.getScene().getWindow();
-        currentStage.close();
+        currentStage.hide();
     }
 
     private void goTo(String path) throws IOException {
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         Parent root = loader.load();
         Stage stage = new Stage();
-        stage.setTitle("Liste des personnages");
-        stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(new Scene(root));
         stage.setResizable(false);
-        stage.showAndWait();
+        stage.show();
     }
 }

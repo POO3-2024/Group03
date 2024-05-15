@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.helha.poo3.projet.javafx.projetjavafx.controleurs.ControleurAddPersonnage">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.helha.poo3.projet.javafx.projetjavafx.controleurs.ControleurAddPersonnage">
    <children>
       <HBox prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: grey;" />
       <Label alignment="CENTER" prefHeight="60.0" prefWidth="600.0" text="NOUVEAU PERSONNAGE" textAlignment="CENTER">
@@ -35,5 +35,6 @@
          </font>
       </Label>
       <Button fx:id="btRetour" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" text="&lt;" />
+      <Label fx:id="lbMessageError" layoutX="35.0" layoutY="101.0" prefHeight="42.0" prefWidth="510.0" />
    </children>
 </AnchorPane>

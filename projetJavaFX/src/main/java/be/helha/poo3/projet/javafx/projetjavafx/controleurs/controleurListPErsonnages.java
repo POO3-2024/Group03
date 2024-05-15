@@ -101,11 +101,21 @@ public class controleurListPErsonnages implements Initializable {
              lvNom.getItems().add(personnage.getName());
              lvPv.getItems().add(personnage.getPointDeVie());
              lvMana.getItems().add(personnage.getManna());
-
+             initNameAction(personnage.getName());
          }
-
     }
-
+    /**
+     * Initialise le gestionnaire d'évènements lorsqu'on appuie sur le nom du personnage.
+     * **/
+    public void initNameAction(String name){
+        lvNom.setOnMouseClicked(e -> {
+            try {
+                openVuePersonnageUser();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+    }
     /**
      * Ouvre la vue pour ajouter un personnage.
      *
@@ -123,6 +133,14 @@ public class controleurListPErsonnages implements Initializable {
     private void openVueAcceille() throws IOException {
         this.mettreAJourListePersonnages();
         this.goTo("/Vues/acceuil.fxml");
+    }
+    /**
+     * Ouvre la vue pour vour les detail de l'utilisateur.
+     *
+     * @throws IOException si une erreur d'entrée/sortie se produit lors de l'ouverture de la vue.
+     */
+    private void openVuePersonnageUser() throws IOException {
+        this.goTo("/Vues/fiche-personnage.fxml");
     }
 
     /**

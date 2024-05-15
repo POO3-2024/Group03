@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbcd6381-d0d5-4f2b-b5b7-a68739728ddd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/armes/Armes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/armes/Armes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/armes/GestionArmes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/armes/GestionArmes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/be/helha/poo3/projet/javafx/projetjavafx/test/dbmanager/testArmes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/be/helha/poo3/projet/javafx/projetjavafx/test/dbmanager/testArmes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -275,7 +270,7 @@
       <workItem from="1715097738745" duration="2207000" />
       <workItem from="1715175001826" duration="7584000" />
       <workItem from="1715596116628" duration="422000" />
-      <workItem from="1715764689855" duration="4110000" />
+      <workItem from="1715764689855" duration="4390000" />
     </task>
     <task id="LOCAL-00001" summary="creation de la class 'TestCrudPersonnage' ainsi que la methode 'testAjoutPersonnage'">
       <option name="closed" value="true" />

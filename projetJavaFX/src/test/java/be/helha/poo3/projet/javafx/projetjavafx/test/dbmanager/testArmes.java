@@ -74,7 +74,20 @@ public class testArmes {
         assertTrue(armesResult.isEmpty());
     }
 
+    @Test
+    @Order(4)
+    public void testRechercherArmes() throws Throwable{
+        for (Armes armes : armes){
+            Armes armeResultat = gestionArmes.getArme(armes.getNom());
 
-    
+            assertEquals(armeResultat.getNom(),armes.getNom());
+            assertEquals(armeResultat.getDegats(),armes.getDegats());
+            assertEquals(armeResultat.getId(),armes.getId());
+        }
+        assertNull(gestionArmes.getArme("Pompe"));
+    }
+
+
+
 
 }

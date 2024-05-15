@@ -39,7 +39,6 @@ public class Personnage {
 
     public void setId(int id) {
         this.id = id;
-        nbPerso -= 1;
     }
 
     public String getName() {

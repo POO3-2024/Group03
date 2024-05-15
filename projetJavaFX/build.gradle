@@ -57,3 +57,16 @@ jlink {
 jlinkZip {
   group = 'distribution'
 }
+
+  jar {
+    // Inclure les classes compilées dans le JAR
+    from sourceSets.main.output.classesDirs
+
+    include 'be/helha/poo3/projet/javafx/projetjavafx/armes/Armes.class'
+    include 'be/helha/poo3/projet/javafx/projetjavafx/armes/GestionArmes.class'
+    include 'be/helha/poo3/projet/javafx/projetjavafx/dbmanager/DBManager.class'
+    include 'be/helha/poo3/projet/javafx/projetjavafx/dbmanager/Persistance.class'
+    include 'be/helha/poo3/projet/javafx/projetjavafx/dbmanager/ParserConfig.class'
+    include 'be/helha/poo3/projet/javafx/projetjavafx/personnages/Personnage.class'
+    include 'be/helha/poo3/projet/javafx/projetjavafx/personnages/Gestionpersonnages.class'
+  }

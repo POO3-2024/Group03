@@ -106,7 +106,7 @@ public class Gestionpersonnages {
     /**
      * Récupère une liste de tous les personnages depuis la base de données.
      *
-     * @return Une liste contenant tous les personnages présents dans la base de données.
+     * @return {@code List<Personnage>} Une liste contenant tous les personnages présents dans la base de données ou {@code null}.
      */
 
     public List<Personnage> listerPersonnages() {

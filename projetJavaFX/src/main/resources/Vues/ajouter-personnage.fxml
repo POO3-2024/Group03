@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.helha.poo3.projet.javafx.projetjavafx.FichePersonnage">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.helha.poo3.projet.javafx.projetjavafx.controleurs.ControleurAddPersonnage">
    <children>
       <HBox prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: grey;" />
       <Label alignment="CENTER" prefHeight="60.0" prefWidth="600.0" text="NOUVEAU PERSONNAGE" textAlignment="CENTER">
@@ -15,10 +15,10 @@
             <Font name="Bookman Old Style Bold" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="260.0" layoutY="324.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="80.0" text="Ajouter" />
-      <TextField layoutX="36.0" layoutY="175.0" />
-      <TextField layoutX="226.0" layoutY="175.0" />
-      <TextField layoutX="416.0" layoutY="175.0" />
+      <Button fx:id="btAjouter" layoutX="260.0" layoutY="324.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="80.0" text="Ajouter" />
+      <TextField fx:id="tfName" layoutX="36.0" layoutY="175.0" />
+      <TextField fx:id="tfPv" layoutX="226.0" layoutY="175.0" />
+      <TextField fx:id="tfManna" layoutX="416.0" layoutY="175.0" />
       <Label layoutX="36.0" layoutY="154.0" text="Nom :">
          <font>
             <Font size="16.0" />
@@ -34,6 +34,6 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="14.0" layoutY="18.0" mnemonicParsing="false" text="&lt;" />
+      <Button fx:id="btRetour" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" text="&lt;" />
    </children>
 </AnchorPane>

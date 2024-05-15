@@ -1,5 +1,6 @@
 package be.helha.poo3.projet.javafx.projetjavafx.armes;
 
+import be.helha.poo3.projet.javafx.projetjavafx.dbmanager.DBManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

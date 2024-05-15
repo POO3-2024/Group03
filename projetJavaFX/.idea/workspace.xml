@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbcd6381-d0d5-4f2b-b5b7-a68739728ddd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/armes/GestionArmes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/armes/GestionArmes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/be/helha/poo3/projet/javafx/projetjavafx/test/dbmanager/testArmes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/be/helha/poo3/projet/javafx/projetjavafx/test/dbmanager/testArmes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +90,9 @@
     "Gradle.projetJavaFX [:HelloApplication.main()].executor": "Run",
     "Gradle.testArmes.executor": "Run",
     "Gradle.testArmes.testAjoutArme.executor": "Run",
+    "Gradle.testArmes.testGetArmeTrouvee.executor": "Run",
     "Gradle.testArmes.testListerArmes.executor": "Run",
+    "Gradle.testArmes.testModifierArmes.executor": "Run",
     "Gradle.testArmes.testRechercherArmes.executor": "Run",
     "Gradle.testArmes.testSupprimerArme.executor": "Run",
     "JUnit.testArmes.executor": "Run",
@@ -115,7 +121,7 @@
       <recent name="D:\projetJava\projetJavaFX\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.testArmes.testRechercherArmes">
+  <component name="RunManager" selected="Gradle.testArmes">
     <configuration name="testArmes" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -164,7 +170,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="testArmes.testListerArmes" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="testArmes.testGetArmeTrouvee" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -177,7 +183,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager.testArmes.testListerArmes&quot;" />
+            <option value="&quot;be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager.testArmes.testGetArmeTrouvee&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -188,7 +194,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="testArmes.testRechercherArmes" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="testArmes.testModifierArmes" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -201,7 +207,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager.testArmes.testRechercherArmes&quot;" />
+            <option value="&quot;be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager.testArmes.testModifierArmes&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -238,11 +244,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.testArmes.testRechercherArmes" />
-        <item itemvalue="Gradle.testArmes.testAjoutArme" />
         <item itemvalue="Gradle.testArmes" />
+        <item itemvalue="Gradle.testArmes.testModifierArmes" />
+        <item itemvalue="Gradle.testArmes.testAjoutArme" />
         <item itemvalue="Gradle.testArmes.testSupprimerArme" />
-        <item itemvalue="Gradle.testArmes.testListerArmes" />
+        <item itemvalue="Gradle.testArmes.testGetArmeTrouvee" />
       </list>
     </recent_temporary>
   </component>
@@ -270,7 +276,8 @@
       <workItem from="1715097738745" duration="2207000" />
       <workItem from="1715175001826" duration="7584000" />
       <workItem from="1715596116628" duration="422000" />
-      <workItem from="1715764689855" duration="4390000" />
+      <workItem from="1715764689855" duration="4970000" />
+      <workItem from="1715773091691" duration="2629000" />
     </task>
     <task id="LOCAL-00001" summary="creation de la class 'TestCrudPersonnage' ainsi que la methode 'testAjoutPersonnage'">
       <option name="closed" value="true" />

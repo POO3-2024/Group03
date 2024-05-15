@@ -62,20 +62,10 @@ public class testArmes {
         }
     }
 
+
+
     @Test
     @Order(3)
-    public void testSupprimerArme() throws Throwable{
-        for (Armes armes : armes){
-            assertTrue(gestionArmes.supprimerArmes(armes.getId()));
-        }
-
-        List<Armes> armesResult= gestionArmes.ListerArmes();
-        System.out.println(armesResult.toString());
-        assertTrue(armesResult.isEmpty());
-    }
-
-    @Test
-    @Order(4)
     public void testRechercherArmes() throws Throwable{
         for (Armes armes : armes){
             Armes armeResultat = gestionArmes.getArme(armes.getNom());
@@ -87,7 +77,50 @@ public class testArmes {
         assertNull(gestionArmes.getArme("Pompe"));
     }
 
+    @Test
+    @Order(4)
+    public void testGetArmeTrouvee() {
+        // Test pour vérifier si une arme existante est correctement récupérée
+        Armes result = gestionArmes.getArme("Epée");
+        assertNotNull(result, "L'arme aurait dû être trouvée dans la base de données.");
+        assertEquals("Epée", result.getNom(), "Le nom de l'arme ne correspond pas.");
+        assertEquals(100, result.getDegats(), "Les dégâts de l'arme ne correspondent pas.");
+        assertEquals(0, result.getId(), "L'ID de l'arme ne correspond pas.");
+    }
 
+
+
+    @Test
+    @Order(5)
+    public void testModifierArmes() throws Throwable{
+
+        String nom = armes.get(1).getNom();
+
+        Armes armesModifier = gestionArmes.getArme(nom);
+        armesModifier.setDegats(50);
+        armesModifier.setNom("test");
+
+        boolean result  = gestionArmes.modifierArmes(armesModifier);
+
+        assertTrue(result);
+
+        Armes armesResultat = gestionArmes.getArme("test");
+
+        assertEquals(armesResultat.getDegats(),armesModifier.getDegats());
+        assertEquals(armesResultat.getNom(),armesModifier.getNom());
+    }
+
+    @Test
+    @Order(6)
+    public void testSupprimerArme() throws Throwable{
+        for (Armes armes : armes){
+            assertTrue(gestionArmes.supprimerArmes(armes.getId()));
+        }
+
+        List<Armes> armesResult= gestionArmes.ListerArmes();
+        System.out.println(armesResult.toString());
+        assertTrue(armesResult.isEmpty());
+    }
 
 
 }

@@ -12,7 +12,7 @@ import be.helha.poo3.projet.javafx.projetjavafx.dbmanager.DBManager;
 public class GestionArmes {
     private static final String GET = "SELECT * FROM arme b WHERE b.Nom = ?";
     private static final String AJOUT = "INSERT INTO arme (Nom,Degats,ID) VALUES (?,?,?)";
-    private static final String MAJ = "UPDATE arme SET Nom= ?, Degats= ?, where ID= ?";
+    private static final String MAJ = "UPDATE arme SET Nom= ?, Degats= ? where ID= ?";
     private static final String LISTER = "SELECT * FROM arme b ORDER BY b.ID";
     private static final String SUPPRIMER = "DELETE FROM arme WHERE ID = ?";
 
@@ -79,11 +79,14 @@ public class GestionArmes {
             stmt.setString(1,nom);
             rs = stmt.executeQuery();
             if(rs.next()){
-                armes = new Armes(rs.getString(2));
-                armes.setId(rs.getInt(1));
-                armes.setDegats(rs.getInt(3));
+                armes = new Armes(rs.getString("Nom"));
+                armes.setId(rs.getInt("ID"));
+                armes.setDegats(rs.getInt("Degats"));
+            }else{
+                System.out.println("Aucune arme trouvé avec le nom " + nom);
             }
         } catch (Exception e) {
+            System.out.println("Erreur pendant la récupération de l'arme" + e.getMessage());
             e.printStackTrace();
         }finally {
             cloturer(rs,stmt,con);

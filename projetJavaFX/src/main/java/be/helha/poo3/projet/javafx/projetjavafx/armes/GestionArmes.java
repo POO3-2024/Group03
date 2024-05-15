@@ -11,10 +11,10 @@ import be.helha.poo3.projet.javafx.projetjavafx.dbmanager.DBManager;
 
 public class GestionArmes {
     private static final String GET = "SELECT * FROM arme b WHERE b.Nom = ?";
-    private static final String AJOUT = "INSERT INTO arme (Nom,Degats) VALUES (?,?)";
+    private static final String AJOUT = "INSERT INTO arme (Nom,Degats,ID) VALUES (?,?,?)";
     private static final String MAJ = "UPDATE arme SET Nom= ?, Degats= ?, where ID= ?";
     private static final String LISTER = "SELECT * FROM arme b ORDER BY b.ID";
-    private static final String SUPPRIMER = "DELETE FROM arme b WHERE b.ID = ?";
+    private static final String SUPPRIMER = "DELETE FROM arme WHERE ID = ?";
 
     public GestionArmes() {
     }
@@ -34,6 +34,7 @@ public class GestionArmes {
             stmt = con.prepareStatement(AJOUT);
             stmt.setString(1,armes.getNom());
             stmt.setInt(2,armes.getDegats());
+            stmt.setInt(3,armes.getId());
 
             int resultat = stmt.executeUpdate();
             if(resultat==1) {
@@ -57,7 +58,6 @@ public class GestionArmes {
             if(stmt != null)
                 stmt.close();
         }catch (Exception e){
-
         }
         try {
             if(con != null)
@@ -95,6 +95,7 @@ public class GestionArmes {
         boolean suppressionReussie = false;
         Connection con = null;
         PreparedStatement stmt = null;
+        ResultSet rs = null;
         try{
             con = DBManager.getInstance().getConnexion();
             stmt = con.prepareStatement(SUPPRIMER);
@@ -105,7 +106,7 @@ public class GestionArmes {
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
-            cloturer(null,stmt,con);
+            cloturer(rs,stmt,con);
         }
         return  suppressionReussie;
     }

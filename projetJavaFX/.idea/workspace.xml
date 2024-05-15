@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cbcd6381-d0d5-4f2b-b5b7-a68739728ddd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/armes/Armes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/armes/Armes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/armes/GestionArmes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/armes/GestionArmes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/be/helha/poo3/projet/javafx/projetjavafx/test/dbmanager/testArmes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/be/helha/poo3/projet/javafx/projetjavafx/test/dbmanager/testArmes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,6 +91,9 @@
     "Gradle.projetJavaFX [:HelloApplication.main()].executor": "Run",
     "Gradle.testArmes.executor": "Run",
     "Gradle.testArmes.testAjoutArme.executor": "Run",
+    "Gradle.testArmes.testListerArmes.executor": "Run",
+    "Gradle.testArmes.testRechercherArmes.executor": "Run",
+    "Gradle.testArmes.testSupprimerArme.executor": "Run",
     "JUnit.testArmes.executor": "Run",
     "JUnit.testArmes.testAjoutArme.executor": "Run",
     "Repository.Attach.Annotations": "false",
@@ -112,31 +120,7 @@
       <recent name="D:\projetJava\projetJavaFX\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.testArmes">
-    <configuration name="TestCrudPersonnage" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager.TestCrudPersonnage&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Gradle.testArmes.testRechercherArmes">
     <configuration name="testArmes" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -185,44 +169,85 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="testArmes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="projetJavaFX.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value=".*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager" />
-      <option name="MAIN_CLASS_NAME" value="be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager.testArmes" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="testArmes.testListerArmes" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager.testArmes.testListerArmes&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
     </configuration>
-    <configuration name="testArmes.testAjoutArme" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="projetJavaFX.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value=".*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager" />
-      <option name="MAIN_CLASS_NAME" value="be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager.testArmes" />
-      <option name="METHOD_NAME" value="testAjoutArme" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="testArmes.testRechercherArmes" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager.testArmes.testRechercherArmes&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="testArmes.testSupprimerArme" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager.testArmes.testSupprimerArme&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.testArmes" />
+        <item itemvalue="Gradle.testArmes.testRechercherArmes" />
         <item itemvalue="Gradle.testArmes.testAjoutArme" />
-        <item itemvalue="JUnit.testArmes" />
-        <item itemvalue="JUnit.testArmes.testAjoutArme" />
-        <item itemvalue="Gradle.TestCrudPersonnage" />
+        <item itemvalue="Gradle.testArmes" />
+        <item itemvalue="Gradle.testArmes.testSupprimerArme" />
+        <item itemvalue="Gradle.testArmes.testListerArmes" />
       </list>
     </recent_temporary>
   </component>
@@ -248,7 +273,9 @@
       <workItem from="1715093393527" duration="1069000" />
       <workItem from="1715097601569" duration="126000" />
       <workItem from="1715097738745" duration="2207000" />
-      <workItem from="1715175001826" duration="4722000" />
+      <workItem from="1715175001826" duration="7584000" />
+      <workItem from="1715596116628" duration="422000" />
+      <workItem from="1715764689855" duration="4110000" />
     </task>
     <task id="LOCAL-00001" summary="creation de la class 'TestCrudPersonnage' ainsi que la methode 'testAjoutPersonnage'">
       <option name="closed" value="true" />

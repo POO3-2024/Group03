@@ -8,8 +8,7 @@ import org.junit.jupiter.api.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -45,5 +44,37 @@ public class testArmes {
         ajoutResult = gestionArmes.ajouterArme(armes.get(0));
         assertFalse(ajoutResult);
     }
+
+
+    @Test
+    @Order(2)
+    public void testListerArmes() throws Throwable{
+        List<Armes> armesResultat = gestionArmes.ListerArmes();
+        assertEquals(armes.size(),armesResultat.size());
+
+        for (int i=0; i<armes.size();i++){
+            Armes armeAttendu = armes.get(i);
+            Armes armeResultat = armesResultat.get(i);
+
+            assertEquals(armeResultat.getNom(),armeAttendu.getNom());
+            assertEquals(armeResultat.getId(),armeAttendu.getId());
+            assertEquals(armeResultat.getDegats(),armeAttendu.getDegats());
+        }
+    }
+
+    @Test
+    @Order(3)
+    public void testSupprimerArme() throws Throwable{
+        for (Armes armes : armes){
+            assertTrue(gestionArmes.supprimerArmes(armes.getId()));
+        }
+
+        List<Armes> armesResult= gestionArmes.ListerArmes();
+        System.out.println(armesResult.toString());
+        assertTrue(armesResult.isEmpty());
+    }
+
+
+    
 
 }

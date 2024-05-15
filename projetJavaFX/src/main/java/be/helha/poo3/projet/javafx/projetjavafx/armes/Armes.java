@@ -18,9 +18,9 @@ public class Armes {
         return id;
     }
 
-    public void setId(int anInt){
+    public void setId(int id){
         this.id = id;
-        nbArmes -=1;
+        //nbArmes -=1;
     }
 
     public String getNom() {

@@ -101,16 +101,16 @@ public class controleurListPErsonnages implements Initializable {
              lvNom.getItems().add(personnage.getName());
              lvPv.getItems().add(personnage.getPointDeVie());
              lvMana.getItems().add(personnage.getManna());
-             initNameAction(personnage.getName());
+             initNameAction(personnage);
          }
     }
     /**
      * Initialise le gestionnaire d'évènements lorsqu'on appuie sur le nom du personnage.
      * **/
-    public void initNameAction(String name){
+    public void initNameAction(Personnage perso){
         lvNom.setOnMouseClicked(e -> {
             try {
-                openVuePersonnageUser();
+                openVuePersonnageUser(perso);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
@@ -139,8 +139,17 @@ public class controleurListPErsonnages implements Initializable {
      *
      * @throws IOException si une erreur d'entrée/sortie se produit lors de l'ouverture de la vue.
      */
-    private void openVuePersonnageUser() throws IOException {
-        this.goTo("/Vues/fiche-personnage.fxml");
+    private void openVuePersonnageUser(Personnage perso) throws IOException {
+        Stage stagePrincipal = (Stage) btAddPerson.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vues/fiche-personnage.fxml"));
+        Parent root = loader.load();
+        // Accéder au contrôleur de la vue source
+        ControleurPersonnage controller = loader.getController();
+        // Stocker les données dans le nœud racine de la vue source
+        root.setUserData(perso);
+
+        stagePrincipal.setScene(new Scene(root));
+        stagePrincipal.show();
     }
 
     /**

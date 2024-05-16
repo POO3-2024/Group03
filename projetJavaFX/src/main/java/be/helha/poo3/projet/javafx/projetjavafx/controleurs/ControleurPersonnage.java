@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -23,16 +24,12 @@ public class ControleurPersonnage  implements Initializable {
     public Pane pnPopup;
     @FXML
     public TextField lbManna, lbPv, lbName;
-    public AnchorPane anVuePersonnage;
+    public AnchorPane acpVuePersonnage;
+    public Label lbId;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Personnage personnage = (Personnage) anVuePersonnage.getUserData();
-        if (personnage != null) {
-            lbName.setText(personnage.getName());
-        } else {
-            lbName.setText("nop");
-        }
+
         pnPopup.setVisible(false);
         initBtRetour();
         initbtConfirmation();
@@ -48,6 +45,7 @@ public class ControleurPersonnage  implements Initializable {
     private void initbtModifier() {
         btModifier.setOnAction(e -> {
             try {
+                System.out.println(e.getSource().toString());
                 openVuePersonnage();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);

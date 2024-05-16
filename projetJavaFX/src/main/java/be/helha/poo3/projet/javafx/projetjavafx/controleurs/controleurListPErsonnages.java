@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -97,20 +98,25 @@ public class controleurListPErsonnages implements Initializable {
      */
     private void listerPersonnages() {
          personnages = gestionpersonnages.listerPersonnages();
+         /**
+         *  Alimentation de la liste des personnages et de leurs attributs
+         * */
          for (Personnage personnage : personnages) {
-             lvNom.getItems().add(personnage.getName());
+             Label lbNamePerso= new Label(personnage.getName());
+             initNameAction(lbNamePerso, personnage);
+             lvNom.getItems().add(lbNamePerso);
              lvPv.getItems().add(personnage.getPointDeVie());
              lvMana.getItems().add(personnage.getManna());
-             initNameAction(personnage);
          }
     }
     /**
      * Initialise le gestionnaire d'évènements lorsqu'on appuie sur le nom du personnage.
      * **/
-    public void initNameAction(Personnage perso){
-        lvNom.setOnMouseClicked(e -> {
+    public void initNameAction(Label lbPersoName,Personnage personnage){
+        lbPersoName.setOnMouseClicked(e -> {
             try {
-                openVuePersonnageUser(perso);
+                // Appel de la méthode openVuePersonnageUser avec le nom du personnage
+                openVuePersonnageUser(personnage);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
@@ -140,16 +146,24 @@ public class controleurListPErsonnages implements Initializable {
      * @throws IOException si une erreur d'entrée/sortie se produit lors de l'ouverture de la vue.
      */
     private void openVuePersonnageUser(Personnage perso) throws IOException {
+
         Stage stagePrincipal = (Stage) btAddPerson.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vues/fiche-personnage.fxml"));
         Parent root = loader.load();
         // Accéder au contrôleur de la vue source
         ControleurPersonnage controller = loader.getController();
         // Stocker les données dans le nœud racine de la vue source
-        root.setUserData(perso);
+
+
+        controller.lbPv.setText(""+ perso.getPointDeVie());
+        controller.lbName.setText(perso.getName());
+        controller.lbManna.setText(""+ perso.getManna());
+
+
 
         stagePrincipal.setScene(new Scene(root));
         stagePrincipal.show();
+
     }
 
     /**

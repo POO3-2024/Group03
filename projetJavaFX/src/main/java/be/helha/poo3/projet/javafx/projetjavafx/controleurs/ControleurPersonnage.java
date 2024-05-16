@@ -211,7 +211,6 @@ public class ControleurPersonnage  implements Initializable {
                 lbMessageError.setText("Erreur de la suppression du personnage.");
             }
         }
-        openVueListPersonnage();
     }
     /**
      * Modifie les informations d'un personnage dans la base de données.

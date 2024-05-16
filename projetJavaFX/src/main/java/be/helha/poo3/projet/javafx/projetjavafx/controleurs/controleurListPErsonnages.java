@@ -158,6 +158,7 @@ public class controleurListPErsonnages implements Initializable {
         controller.lbName.setText(perso.getName());
         controller.lbManna.setText(""+ perso.getManna());
         controller.idPersonnage = perso.getId();
+        controller.lbId.setText("Personnage : "+ perso.getName());
 
         stagePrincipal.setScene(new Scene(root));
         stagePrincipal.show();

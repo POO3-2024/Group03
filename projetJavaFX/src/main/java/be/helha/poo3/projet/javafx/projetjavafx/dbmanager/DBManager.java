@@ -56,7 +56,6 @@ public class DBManager {
     public Connection getConnexion() throws SQLException {
         try {
             connection = DriverManager.getConnection(persistance.getDBPath());
-            System.out.println("Vous êtes connecté");
         } catch (SQLException e) {
             e.printStackTrace();
         }

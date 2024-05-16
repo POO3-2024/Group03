@@ -5,31 +5,37 @@ import be.helha.poo3.projet.javafx.projetjavafx.dbmanager.DBManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import be.helha.poo3.projet.javafx.projetjavafx.dbmanager.DBManager;
 
 
 public class GestionArmes {
     private static final String GET = "SELECT * FROM arme b WHERE b.Nom = ?";
-    private static final String AJOUT = "INSERT INTO arme (ID, Nom, Degats) VALUES (?,?,?)";
-    private static final String MAJ = "UPDATE arme SET Nom= ?, Degats= ?, where ID= ?";
+    private static final String AJOUT = "INSERT INTO arme (Nom,Degats,ID) VALUES (?,?,?)";
+    private static final String MAJ = "UPDATE arme SET Nom= ?, Degats= ? where ID= ?";
     private static final String LISTER = "SELECT * FROM arme b ORDER BY b.ID";
-    private static final String SUPPRIMER = "DELETE FROM arme b WHERE b.ID = ?";
+    private static final String SUPPRIMER = "DELETE FROM arme WHERE ID = ?";
 
     public GestionArmes() {
     }
 
     public boolean ajouterArme(Armes armes){
+
+        if(this.getArme(armes.getNom())!=null){
+            return false;
+        }
+
+
         boolean ajoutReussi = false;
         Connection con = null;
         PreparedStatement stmt = null;
         try{
             con = DBManager.getInstance().getConnexion();
             stmt = con.prepareStatement(AJOUT);
-            stmt.setInt(1,armes.getId());
-            stmt.setString(2,armes.getNom());
-            stmt.setInt(3,armes.getDegats());
+            stmt.setString(1,armes.getNom());
+            stmt.setInt(2,armes.getDegats());
+            stmt.setInt(3,armes.getId());
 
             int resultat = stmt.executeUpdate();
             if(resultat==1) {
@@ -40,8 +46,6 @@ public class GestionArmes {
         }finally {
             cloturer(null,stmt,con);
         }
-
-
         return ajoutReussi;
     }
 
@@ -55,7 +59,6 @@ public class GestionArmes {
             if(stmt != null)
                 stmt.close();
         }catch (Exception e){
-
         }
         try {
             if(con != null)
@@ -77,11 +80,14 @@ public class GestionArmes {
             stmt.setString(1,nom);
             rs = stmt.executeQuery();
             if(rs.next()){
-                armes = new Armes(rs.getString(2));
-                armes.setId(rs.getInt(1));
-                armes.setDegats(rs.getInt(3));
+                armes = new Armes(rs.getString("Nom"));
+                armes.setId(rs.getInt("ID"));
+                armes.setDegats(rs.getInt("Degats"));
+            }else{
+                System.out.println("Aucune arme trouvé avec le nom " + nom);
             }
         } catch (Exception e) {
+            System.out.println("Erreur pendant la récupération de l'arme" + e.getMessage());
             e.printStackTrace();
         }finally {
             cloturer(rs,stmt,con);
@@ -93,6 +99,7 @@ public class GestionArmes {
         boolean suppressionReussie = false;
         Connection con = null;
         PreparedStatement stmt = null;
+        ResultSet rs = null;
         try{
             con = DBManager.getInstance().getConnexion();
             stmt = con.prepareStatement(SUPPRIMER);
@@ -103,7 +110,7 @@ public class GestionArmes {
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
-            cloturer(null,stmt,con);
+            cloturer(rs,stmt,con);
         }
         return  suppressionReussie;
     }

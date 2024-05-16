@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -34,6 +35,8 @@ public class ControleurAddPersonnage implements Initializable {
      * */
     @FXML
     public Button btRetour,btAjouter;
+    @FXML
+    public Label lbMessageError;
 
     /**
      * Gestionnaire des personnages de l'application.
@@ -51,6 +54,7 @@ public class ControleurAddPersonnage implements Initializable {
         tfManna.setText("");
         tfPv.setText("");
         tfName.setText("");
+        lbMessageError.setText("");
         this.initBtRetour();
         this.initBtAjouter();
     }
@@ -89,9 +93,9 @@ public class ControleurAddPersonnage implements Initializable {
         String name = tfName.getText();
         String manaText = tfManna.getText();
         String pvText = tfPv.getText();
-
+        lbMessageError.setText("");
         if (!allFieldsFilled(name, manaText, pvText)) {
-            System.out.println("Veuillez remplir tous les champs.");
+            lbMessageError.setText("Veuillez remplir tous les champs.");
             return;
         }
 
@@ -99,21 +103,21 @@ public class ControleurAddPersonnage implements Initializable {
         int pv = parseInteger(pvText);
 
         if (!(mana >= 0 && pv >= 0)) {
-            System.out.println("Les valeurs doivent être des nombres positifs.");
+            lbMessageError.setText("Les pv et le manna doivent être positifs.");
             return;
         }
         if(containsOnlyDigits(name)){
-            System.out.println("Le nom ne peut contenir que des chiffres.");
+            lbMessageError.setText("Le nom ne peut pas contenir que des chiffres.");
             return;
         }
 
         Personnage persoToAdd = new Personnage(name);
 
         if (persoToAdd.getPointDeVie() < pv){
-            System.out.println("les points de vie ne peuvent pas depasés "+ persoToAdd.getPointDeVie()+".");
+            lbMessageError.setText("les points de vie ne peuvent pas depasés "+ persoToAdd.getPointDeVie()+".");
             return;
         }else if (persoToAdd.getManna() < mana){
-            System.out.println("le manna ne peuvent pas depasés "+ persoToAdd.getManna()+".");
+            lbMessageError.setText("le manna ne peut pas depasés "+ persoToAdd.getManna()+".");
             return;
         }else {
             persoToAdd.setPointDeVie(pv);
@@ -121,7 +125,7 @@ public class ControleurAddPersonnage implements Initializable {
         }
 
         if (!(this.addPersonnage(persoToAdd))){
-            System.out.println("Erreur de l'ajouter de personnage.");
+            lbMessageError.setText("Erreur de l'ajout du personnage.");
         }
         openVueListPersonnage();
     }
@@ -148,7 +152,7 @@ public class ControleurAddPersonnage implements Initializable {
         try {
             return Integer.parseInt(text);
         } catch (NumberFormatException e) {
-            System.out.println("Veuillez entrer un nombre valide.");
+            lbMessageError.setText("Veuillez entrer un nombre valide.");
             return -1;
         }
     }

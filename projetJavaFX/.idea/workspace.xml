@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbcd6381-d0d5-4f2b-b5b7-a68739728ddd" name="Changes" comment="ajout de la java doc des class suivant :&#10;'controleurPrincipal', 'controleurListPErsonnages', 'ControleurAddPersonnage'.">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/ControleurAddPersonnage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/ControleurAddPersonnage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/ControleurPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/ControleurPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/controleurListPErsonnages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/controleurs/controleurListPErsonnages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/personnages/Gestionpersonnages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/poo3/projet/javafx/projetjavafx/personnages/Gestionpersonnages.java" afterDir="false" />
-    </list>
+    <list default="true" id="cbcd6381-d0d5-4f2b-b5b7-a68739728ddd" name="Changes" comment="ajout de la fonctionnalité pour modifier et supprimer un personnage" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,17 +23,7 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="projetJavaFX" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="projetJavaFX" type="f1a62948:ProjectNode" />
-                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
@@ -81,30 +62,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.TestCrudPersonnage.executor": "Run",
-    "Gradle.TestCrudPersonnage.testAjoutPersonnage.executor": "Run",
-    "Gradle.TestCrudPersonnage.testSupprimerPersonnage.executor": "Run",
-    "Gradle.TestDBManager.executor": "Run",
-    "Gradle.projetJavaFX [:ApplicationGame.main()].executor": "Run",
-    "Gradle.projetJavaFX [:HelloApplication.main()].executor": "Run",
-    "Gradle.projetJavaFX [:main.main()].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature/controlerPersonnage",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/moham/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-graphics/19.0.2/1115b4c69577f621e8ec0a52b925d267c1c1b4ec/javafx-graphics-19.0.2-win.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.40425533",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.TestCrudPersonnage.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TestCrudPersonnage.testAjoutPersonnage.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TestCrudPersonnage.testSupprimerPersonnage.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TestDBManager.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.projetJavaFX [:ApplicationGame.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.projetJavaFX [:HelloApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.projetJavaFX [:main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/controlerPersonnage&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/moham/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-graphics/19.0.2/1115b4c69577f621e8ec0a52b925d267c1c1b4ec/javafx-graphics-19.0.2-win.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.40425533&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\moham\OneDrive\Bureau\HELHA\BLOC 2\Q2\Java3\Projet\Group03\projetJavaFX\src\main\resources\Vue" />

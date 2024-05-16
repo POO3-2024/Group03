@@ -1,4 +1,4 @@
-package be.helha.poo3.projet.javafx.projetjavafx.dbmanager;
+package be.helha.poo3.projet.javafx.projetjavafx.daoImpl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
  * Classe qui permet de gérer la connexion à la DB (implémentée sous forme d'un singleton)
  *
  * @author Diesbecq Aaron
- * @see be.helha.poo3.projet.javafx.projetjavafx.dbmanager.DBManager
+ * @see DBManager
  */
 public class DBManager {
     /**

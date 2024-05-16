@@ -1,7 +1,7 @@
 package be.helha.poo3.projet.javafx.projetjavafx.controleurs;
 
-import be.helha.poo3.projet.javafx.projetjavafx.personnages.Gestionpersonnages;
-import be.helha.poo3.projet.javafx.projetjavafx.personnages.Personnage;
+import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.PersonnageDaoImpl;
+import be.helha.poo3.projet.javafx.projetjavafx.domaine.Personnage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -41,7 +41,7 @@ public class ControleurAddPersonnage implements Initializable {
     /**
      * Gestionnaire des personnages de l'application.
      */
-    Gestionpersonnages gestionpersonnages = new Gestionpersonnages();
+    PersonnageDaoImpl personnageDaoImpl = new PersonnageDaoImpl();
 
     /**
      * Initialise le contrôleur.
@@ -80,7 +80,7 @@ public class ControleurAddPersonnage implements Initializable {
      * @return {@code true} si le personnage a bien etais ajouter sinom {@code false}
      */
     private boolean addPersonnage(Personnage perso) throws IOException {
-        return gestionpersonnages.ajouterPerso(perso);
+        return personnageDaoImpl.ajouterPerso(perso);
     }
     /**
      *

@@ -1,6 +1,5 @@
-package be.helha.poo3.projet.javafx.projetjavafx.dbmanager;
+package be.helha.poo3.projet.javafx.projetjavafx.daoImpl;
 
-import java.io.FileReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -8,14 +7,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import com.google.gson.Gson;
-import com.google.gson.ReflectionAccessFilter;
-import com.google.gson.stream.JsonReader;
 
 /**
  * La classe ParserConfig sert à lire le fichier de config JSON et de le mettre dans un objet Persistance
  *
  * @author Diesbecq Aaron
- * @see be.helha.poo3.projet.javafx.projetjavafx.dbmanager.ParserConfig
+ * @see ParserConfig
  */
 public class ParserConfig {
 

@@ -1,23 +1,23 @@
-package be.helha.poo3.projet.javafx.projetjavafx.armes;
-
-import be.helha.poo3.projet.javafx.projetjavafx.dbmanager.DBManager;
+package be.helha.poo3.projet.javafx.projetjavafx.daoImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import be.helha.poo3.projet.javafx.projetjavafx.dbmanager.DBManager;
+
+import be.helha.poo3.projet.javafx.projetjavafx.dao.ArmeDao;
+import be.helha.poo3.projet.javafx.projetjavafx.domaine.Armes;
 
 
-public class GestionArmes {
+public class ArmeDaoImpl implements ArmeDao {
     private static final String GET = "SELECT * FROM arme b WHERE b.Nom = ?";
     private static final String AJOUT = "INSERT INTO arme (Nom,Degats,ID) VALUES (?,?,?)";
     private static final String MAJ = "UPDATE arme SET Nom= ?, Degats= ? where ID= ?";
     private static final String LISTER = "SELECT * FROM arme b ORDER BY b.ID";
     private static final String SUPPRIMER = "DELETE FROM arme WHERE ID = ?";
 
-    public GestionArmes() {
+    public ArmeDaoImpl() {
     }
 
     public boolean ajouterArme(Armes armes){

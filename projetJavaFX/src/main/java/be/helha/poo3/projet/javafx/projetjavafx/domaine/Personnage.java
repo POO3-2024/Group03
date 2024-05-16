@@ -1,7 +1,7 @@
 /**
  * @author Demba Mohamed Samba
  * */
-package be.helha.poo3.projet.javafx.projetjavafx.personnages;
+package be.helha.poo3.projet.javafx.projetjavafx.domaine;
 
 /**
  * Cette classe représente un personnage.

@@ -1,10 +1,9 @@
-package be.helha.poo3.projet.javafx.projetjavafx.Application;
+package be.helha.poo3.projet.javafx.projetjavafx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.util.Objects;

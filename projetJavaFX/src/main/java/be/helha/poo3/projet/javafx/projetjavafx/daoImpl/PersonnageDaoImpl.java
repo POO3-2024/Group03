@@ -1,7 +1,8 @@
-package be.helha.poo3.projet.javafx.projetjavafx.personnages;
+package be.helha.poo3.projet.javafx.projetjavafx.daoImpl;
 
 
-import be.helha.poo3.projet.javafx.projetjavafx.dbmanager.DBManager;
+import be.helha.poo3.projet.javafx.projetjavafx.dao.PersonnageDao;
+import be.helha.poo3.projet.javafx.projetjavafx.domaine.Personnage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,14 +15,14 @@ import java.util.List;
  *@author Mohamed Samba Demba
  *
  */
-public class Gestionpersonnages {
+public class PersonnageDaoImpl implements PersonnageDao {
     private static final String GET = "SELECT * FROM personnage b WHERE b.Nom = ?";
     private static final String AJOUT = "INSERT INTO personnage (ID, Nom, PV, Manna) VALUES (?,?,?,?)";
     private static final String MAJ = "UPDATE personnage SET Manna= ?, PV= ?, Nom= ? where ID= ?";
     private static final String LISTER = "SELECT * FROM personnage b ORDER BY b.ID";
     private static final String SUPPRIMER = "DELETE FROM personnage WHERE ID = ?";
 
-    public Gestionpersonnages() {
+    public PersonnageDaoImpl() {
     }
 
     private void cloturer(ResultSet rs, PreparedStatement stmt, Connection con) {

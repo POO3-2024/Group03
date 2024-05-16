@@ -1,4 +1,4 @@
-package be.helha.poo3.projet.javafx.projetjavafx.armes;
+package be.helha.poo3.projet.javafx.projetjavafx.domaine;
 
 public class Armes {
     private static int nbArmes = 0;

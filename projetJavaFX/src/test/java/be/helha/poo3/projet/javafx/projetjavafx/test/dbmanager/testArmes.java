@@ -1,8 +1,7 @@
 package be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager;
 
-import be.helha.poo3.projet.javafx.projetjavafx.armes.GestionArmes;
-import be.helha.poo3.projet.javafx.projetjavafx.armes.Armes;
-import javafx.fxml.FXML;
+import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.ArmeDaoImpl;
+import be.helha.poo3.projet.javafx.projetjavafx.domaine.Armes;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
@@ -14,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class testArmes {
 
-    GestionArmes gestionArmes = new GestionArmes();
+    ArmeDaoImpl armeDaoImpl = new ArmeDaoImpl();
     private static final List<Armes> armes = new ArrayList<>();
 
     @BeforeAll
@@ -38,10 +37,10 @@ public class testArmes {
     public void testAjoutArme(){
         boolean ajoutResult = false;
         for (Armes armes1 : armes){
-            ajoutResult = gestionArmes.ajouterArme(armes1);
+            ajoutResult = armeDaoImpl.ajouterArme(armes1);
             assertTrue(ajoutResult);
         }
-        ajoutResult = gestionArmes.ajouterArme(armes.get(0));
+        ajoutResult = armeDaoImpl.ajouterArme(armes.get(0));
         assertFalse(ajoutResult);
     }
 
@@ -49,7 +48,7 @@ public class testArmes {
     @Test
     @Order(2)
     public void testListerArmes() throws Throwable{
-        List<Armes> armesResultat = gestionArmes.ListerArmes();
+        List<Armes> armesResultat = armeDaoImpl.ListerArmes();
         assertEquals(armes.size(),armesResultat.size());
 
         for (int i=0; i<armes.size();i++){
@@ -68,20 +67,20 @@ public class testArmes {
     @Order(3)
     public void testRechercherArmes() throws Throwable{
         for (Armes armes : armes){
-            Armes armeResultat = gestionArmes.getArme(armes.getNom());
+            Armes armeResultat = armeDaoImpl.getArme(armes.getNom());
 
             assertEquals(armeResultat.getNom(),armes.getNom());
             assertEquals(armeResultat.getDegats(),armes.getDegats());
             assertEquals(armeResultat.getId(),armes.getId());
         }
-        assertNull(gestionArmes.getArme("Pompe"));
+        assertNull(armeDaoImpl.getArme("Pompe"));
     }
 
     @Test
     @Order(4)
     public void testGetArmeTrouvee() {
         // Test pour vérifier si une arme existante est correctement récupérée
-        Armes result = gestionArmes.getArme("Epée");
+        Armes result = armeDaoImpl.getArme("Epée");
         assertNotNull(result, "L'arme aurait dû être trouvée dans la base de données.");
         assertEquals("Epée", result.getNom(), "Le nom de l'arme ne correspond pas.");
         assertEquals(100, result.getDegats(), "Les dégâts de l'arme ne correspondent pas.");
@@ -96,15 +95,15 @@ public class testArmes {
 
         String nom = armes.get(1).getNom();
 
-        Armes armesModifier = gestionArmes.getArme(nom);
+        Armes armesModifier = armeDaoImpl.getArme(nom);
         armesModifier.setDegats(50);
         armesModifier.setNom("test");
 
-        boolean result  = gestionArmes.modifierArmes(armesModifier);
+        boolean result  = armeDaoImpl.modifierArmes(armesModifier);
 
         assertTrue(result);
 
-        Armes armesResultat = gestionArmes.getArme("test");
+        Armes armesResultat = armeDaoImpl.getArme("test");
 
         assertEquals(armesResultat.getDegats(),armesModifier.getDegats());
         assertEquals(armesResultat.getNom(),armesModifier.getNom());
@@ -114,10 +113,10 @@ public class testArmes {
     @Order(6)
     public void testSupprimerArme() throws Throwable{
         for (Armes armes : armes){
-            assertTrue(gestionArmes.supprimerArmes(armes.getId()));
+            assertTrue(armeDaoImpl.supprimerArmes(armes.getId()));
         }
 
-        List<Armes> armesResult= gestionArmes.ListerArmes();
+        List<Armes> armesResult= armeDaoImpl.ListerArmes();
         System.out.println(armesResult.toString());
         assertTrue(armesResult.isEmpty());
     }

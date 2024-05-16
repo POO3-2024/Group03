@@ -1,8 +1,8 @@
 package be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager;
 
-import be.helha.poo3.projet.javafx.projetjavafx.dbmanager.DBManager;
-import be.helha.poo3.projet.javafx.projetjavafx.dbmanager.ParserConfig;
-import be.helha.poo3.projet.javafx.projetjavafx.dbmanager.Persistance;
+import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.DBManager;
+import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.ParserConfig;
+import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.Persistance;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;

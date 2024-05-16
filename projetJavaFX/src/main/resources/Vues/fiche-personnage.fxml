@@ -12,7 +12,7 @@
 <AnchorPane fx:id="acpVuePersonnage" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.helha.poo3.projet.javafx.projetjavafx.controleurs.ControleurPersonnage">
    <children>
       <HBox prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: grey;" />
-      <Label fx:id="lbId" alignment="CENTER" prefHeight="60.0" prefWidth="600.0" text="PERSONNAGE ID" textAlignment="CENTER">
+      <Label fx:id="lbId" alignment="CENTER" prefHeight="60.0" prefWidth="600.0" text="PERSONNAGE" textAlignment="CENTER">
          <font>
             <Font name="Bookman Old Style Bold" size="20.0" />
          </font>
@@ -55,6 +55,6 @@
          </content>
       </DialogPane>
       <Button fx:id="btRetour" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" text="&lt;" />
-      <Label fx:id="lbMessageError" layoutX="66.0" layoutY="103.0" prefHeight="18.0" prefWidth="449.0" text="Label" />
+      <Label fx:id="lbMessageError" layoutX="66.0" layoutY="103.0" prefHeight="18.0" prefWidth="449.0" text="" />
    </children>
 </AnchorPane>

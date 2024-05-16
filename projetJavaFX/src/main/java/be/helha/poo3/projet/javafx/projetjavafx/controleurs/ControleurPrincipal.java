@@ -1,7 +1,7 @@
 package be.helha.poo3.projet.javafx.projetjavafx.controleurs;
 
-import be.helha.poo3.projet.javafx.projetjavafx.personnages.Gestionpersonnages;
-import be.helha.poo3.projet.javafx.projetjavafx.personnages.Personnage;
+import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.PersonnageDaoImpl;
+import be.helha.poo3.projet.javafx.projetjavafx.domaine.Personnage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -40,7 +40,7 @@ public class ControleurPrincipal implements Initializable {
     /**
      * Gestionnaire des personnages de l'application.
      */
-    private final Gestionpersonnages gestionpersonnages = new Gestionpersonnages();
+    private final PersonnageDaoImpl personnageDaoImpl = new PersonnageDaoImpl();
 
     /**
      * Liste des personnages de l'application.
@@ -94,7 +94,7 @@ public class ControleurPrincipal implements Initializable {
      * Récupère le nombre de personnages dans la base de données et l'affiche dans un label.
      */
     private void getNbPersonnage() {
-        this.personnages = gestionpersonnages.listerPersonnages();
+        this.personnages = personnageDaoImpl.listerPersonnages();
         lbNombreDePersonnage.setText("" + this.personnages.size());
     }
 

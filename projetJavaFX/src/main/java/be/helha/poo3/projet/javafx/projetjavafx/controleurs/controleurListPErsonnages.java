@@ -1,7 +1,7 @@
 package be.helha.poo3.projet.javafx.projetjavafx.controleurs;
 
-import be.helha.poo3.projet.javafx.projetjavafx.personnages.Gestionpersonnages;
-import be.helha.poo3.projet.javafx.projetjavafx.personnages.Personnage;
+import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.PersonnageDaoImpl;
+import be.helha.poo3.projet.javafx.projetjavafx.domaine.Personnage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -38,7 +37,7 @@ public class controleurListPErsonnages implements Initializable {
     /**
      * Gestionnaire des personnages de l'application.
      */
-    private final Gestionpersonnages gestionpersonnages = new Gestionpersonnages();
+    private final PersonnageDaoImpl personnageDaoImpl = new PersonnageDaoImpl();
     /**
      * Liste des personnages de l'application.
      */
@@ -97,7 +96,7 @@ public class controleurListPErsonnages implements Initializable {
      * Liste les personnages et les affiche dans la vue.
      */
     private void listerPersonnages() {
-         personnages = gestionpersonnages.listerPersonnages();
+         personnages = personnageDaoImpl.listerPersonnages();
          /**
          *  Alimentation de la liste des personnages et de leurs attributs
          * */
@@ -158,6 +157,7 @@ public class controleurListPErsonnages implements Initializable {
         controller.lbName.setText(perso.getName());
         controller.lbManna.setText(""+ perso.getManna());
         controller.idPersonnage = perso.getId();
+        controller.lbId.setText("Personnage : "+ perso.getName());
 
         stagePrincipal.setScene(new Scene(root));
         stagePrincipal.show();

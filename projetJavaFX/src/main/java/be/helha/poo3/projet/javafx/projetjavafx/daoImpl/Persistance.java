@@ -1,10 +1,10 @@
-package be.helha.poo3.projet.javafx.projetjavafx.dbmanager;
+package be.helha.poo3.projet.javafx.projetjavafx.daoImpl;
 
 /**
  * La classe Persistance représente le contenu du fichier de config
  *
  * @author Diesbecq Aaron
- * @see be.helha.poo3.projet.javafx.projetjavafx.dbmanager.Persistance
+ * @see Persistance
  */
 public class Persistance {
     /**

@@ -1,7 +1,7 @@
 package be.helha.poo3.projet.javafx.projetjavafx.controleurs;
 
-import be.helha.poo3.projet.javafx.projetjavafx.personnages.Gestionpersonnages;
-import be.helha.poo3.projet.javafx.projetjavafx.personnages.Personnage;
+import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.PersonnageDaoImpl;
+import be.helha.poo3.projet.javafx.projetjavafx.domaine.Personnage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -52,7 +51,7 @@ public class ControleurPersonnage  implements Initializable {
     /**
      * Gestionnaire des personnages de l'application.
      */
-    Gestionpersonnages gestionpersonnages= new Gestionpersonnages();
+    PersonnageDaoImpl personnageDaoImpl = new PersonnageDaoImpl();
 
     /**
      * Identifiant du personnage.
@@ -211,7 +210,6 @@ public class ControleurPersonnage  implements Initializable {
                 lbMessageError.setText("Erreur de la suppression du personnage.");
             }
         }
-        openVueListPersonnage();
     }
     /**
      * Modifie les informations d'un personnage dans la base de données.
@@ -221,7 +219,7 @@ public class ControleurPersonnage  implements Initializable {
      * @throws IOException si une erreur d'entrée/sortie se produit lors de la modification du personnage.
      */
     private boolean modifierPersonnage(Personnage perso) throws IOException {
-        return gestionpersonnages.modifierPersonnage(perso);
+        return personnageDaoImpl.modifierPersonnage(perso);
     }
 
     /**
@@ -232,7 +230,7 @@ public class ControleurPersonnage  implements Initializable {
      * @throws IOException si une erreur d'entrée/sortie se produit lors de la suppression du personnage.
      */
     private boolean supprimer(Personnage perso) throws IOException {
-        return gestionpersonnages.supprimerPersonnage(perso.getId());
+        return personnageDaoImpl.supprimerPersonnage(perso.getId());
     }
     /**
      * Ouvre la vue liste des personnages.

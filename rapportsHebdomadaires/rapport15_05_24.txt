@@ -1,0 +1,4 @@
+Semaine du 08/05/24 au 15/05/24 :
+-Controller Personnages (presque terminé) (Mohamed Samba Demba)
+-Fin des tests gestionArmes (Alahyane Abdel)
+-Essai d'intégration de la librairie (Tabi Zaccaria et Diesbecq Aaron)

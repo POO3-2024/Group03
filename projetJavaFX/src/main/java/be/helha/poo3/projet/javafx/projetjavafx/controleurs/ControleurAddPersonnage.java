@@ -103,11 +103,11 @@ public class ControleurAddPersonnage implements Initializable {
         int pv = parseInteger(pvText);
 
         if (!(mana >= 0 && pv >= 0)) {
-            lbMessageError.setText("Les valeurs doivent être des nombres positifs.");
+            lbMessageError.setText("Les pv et le manna doivent être positifs.");
             return;
         }
         if(containsOnlyDigits(name)){
-            lbMessageError.setText("Le nom ne peut contenir que des chiffres.");
+            lbMessageError.setText("Le nom ne peut pas contenir que des chiffres.");
             return;
         }
 
@@ -117,7 +117,7 @@ public class ControleurAddPersonnage implements Initializable {
             lbMessageError.setText("les points de vie ne peuvent pas depasés "+ persoToAdd.getPointDeVie()+".");
             return;
         }else if (persoToAdd.getManna() < mana){
-            lbMessageError.setText("le manna ne peuvent pas depasés "+ persoToAdd.getManna()+".");
+            lbMessageError.setText("le manna ne peut pas depasés "+ persoToAdd.getManna()+".");
             return;
         }else {
             persoToAdd.setPointDeVie(pv);
@@ -125,7 +125,7 @@ public class ControleurAddPersonnage implements Initializable {
         }
 
         if (!(this.addPersonnage(persoToAdd))){
-            lbMessageError.setText("Erreur de l'ajouter de personnage.");
+            lbMessageError.setText("Erreur de l'ajout du personnage.");
         }
         openVueListPersonnage();
     }

@@ -152,14 +152,12 @@ public class controleurListPErsonnages implements Initializable {
         Parent root = loader.load();
         // Accéder au contrôleur de la vue source
         ControleurPersonnage controller = loader.getController();
+
         // Stocker les données dans le nœud racine de la vue source
-
-
         controller.lbPv.setText(""+ perso.getPointDeVie());
         controller.lbName.setText(perso.getName());
         controller.lbManna.setText(""+ perso.getManna());
-
-
+        controller.idPersonnage = perso.getId();
 
         stagePrincipal.setScene(new Scene(root));
         stagePrincipal.show();

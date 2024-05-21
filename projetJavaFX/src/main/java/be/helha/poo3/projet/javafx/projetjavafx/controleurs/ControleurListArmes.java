@@ -42,6 +42,17 @@ public class ControleurListArmes implements Initializable {
     }
 
     private void initBtAddArmes() {
+        btAddArmes.setOnAction(e -> {
+            try {
+                openVueAddArmes();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+    }
+
+    private void openVueAddArmes() throws IOException{
+        this.goTo("/Vues/ajouter-arme.fxml");
     }
 
     private void initBtRetour() {
@@ -66,6 +77,11 @@ public class ControleurListArmes implements Initializable {
         stagePrincipal.show();
     }
 
+    private void mettreAJourListeArmes() {
+        lvNom.getItems().clear();
+        lvDegats.getItems().clear();
+        this.listerArmes();
+    }
 
     private void listerArmes() {
         armesList = armeDaoImpl.ListerArmes();
@@ -106,11 +122,7 @@ public class ControleurListArmes implements Initializable {
         stagePrincipal.show();
     }
 
-    private void mettreAJourListeArmes() {
-        lvNom.getItems().clear();
-        lvDegats.getItems().clear();
-        this.listerArmes();
-    }
+
 
 
 

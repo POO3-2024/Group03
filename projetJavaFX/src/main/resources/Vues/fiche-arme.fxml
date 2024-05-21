@@ -9,20 +9,20 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.helha.poo3.projet.javafx.projetjavafx.FichePersonnage">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.helha.poo3.projet.javafx.projetjavafx.controleurs.ControleurArme">
    <children>
       <HBox prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: grey;" />
-      <Label alignment="CENTER" prefHeight="60.0" prefWidth="600.0" text="ARME ID" textAlignment="CENTER">
+      <Label fx:id="lbId" alignment="CENTER" prefHeight="60.0" prefWidth="600.0" text="ARME ID" textAlignment="CENTER">
          <font>
             <Font name="Bookman Old Style Bold" size="20.0" />
          </font>
       </Label>
       <Button layoutX="128.0" layoutY="331.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="80.0" text="Modifier" />
       <Button layoutX="394.0" layoutY="331.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="80.0" text="Supprimer" />
-      <TextField layoutX="85.0" layoutY="175.0" />
-      <TextField layoutX="359.0" layoutY="175.0" />
+      <TextField fx:id="lbName" layoutX="85.0" layoutY="175.0" />
+      <TextField fx:id="lbDegats" layoutX="359.0" layoutY="175.0" />
       <Label layoutX="85.0" layoutY="154.0" text="Nom :">
-         <font>
+         <font>s
             <Font size="16.0" />
          </font>
       </Label>
@@ -49,5 +49,6 @@
             </Pane>
          </content>
       </DialogPane>
+      <Button fx:id="btRetour" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" text="&lt;" />
    </children>
 </AnchorPane>

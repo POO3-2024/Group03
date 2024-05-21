@@ -69,6 +69,21 @@ public class ControleurPrincipal implements Initializable {
                 e.printStackTrace();
             }
         });
+        initBoutonArmes();
+    }
+
+    private void initBoutonArmes(){
+        btArme.setOnAction(event -> {
+            try {
+                openVueArmes();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    private void openVueArmes() throws IOException{
+        this.goTo("/Vues/lister-arme.fxml");
     }
 
     /**

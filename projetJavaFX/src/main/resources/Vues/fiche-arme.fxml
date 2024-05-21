@@ -17,8 +17,8 @@
             <Font name="Bookman Old Style Bold" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="128.0" layoutY="331.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="80.0" text="Modifier" />
-      <Button layoutX="394.0" layoutY="331.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="80.0" text="Supprimer" />
+      <Button fx:id="btModifier" layoutX="128.0" layoutY="331.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="80.0" text="Modifier" />
+      <Button fx:id="btSupprimer" layoutX="394.0" layoutY="331.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="80.0" text="Supprimer" />
       <TextField fx:id="lbName" layoutX="85.0" layoutY="175.0" />
       <TextField fx:id="lbDegats" layoutX="359.0" layoutY="175.0" />
       <Label layoutX="85.0" layoutY="154.0" text="Nom :">
@@ -32,7 +32,7 @@
          </font>
       </Label>
       <Button layoutX="14.0" layoutY="18.0" mnemonicParsing="false" text="&lt;" />
-      <DialogPane layoutX="120.0" layoutY="162.0">
+      <DialogPane fx:id="pnPopup" layoutX="120.0" layoutY="162.0">
          <header>
             <Label alignment="CENTER" text="Voulez-vous vraiment supprimer cette arme ?" textAlignment="CENTER">
                <font>
@@ -43,12 +43,13 @@
          <content>
             <Pane prefHeight="31.0" prefWidth="360.0">
                <children>
-                  <Button layoutX="108.0" layoutY="13.0" mnemonicParsing="false" text="Oui" />
-                  <Button layoutX="206.0" layoutY="13.0" mnemonicParsing="false" text="Non" />
+                  <Button fx:id="btConfirmation" layoutX="108.0" layoutY="13.0" mnemonicParsing="false" text="Oui" />
+                  <Button fx:id="btNonconfimation" layoutX="206.0" layoutY="13.0" mnemonicParsing="false" text="Non" />
                </children>
             </Pane>
          </content>
       </DialogPane>
       <Button fx:id="btRetour" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" text="&lt;" />
+      <Label fx:id="lbMessageError" layoutX="66.0" layoutY="103.0" prefHeight="18.0" prefWidth="449.0" text="" />
    </children>
 </AnchorPane>

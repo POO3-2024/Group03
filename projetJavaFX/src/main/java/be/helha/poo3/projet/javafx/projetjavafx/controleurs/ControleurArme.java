@@ -1,5 +1,7 @@
 package be.helha.poo3.projet.javafx.projetjavafx.controleurs;
 
+import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.ArmeDaoImpl;
+import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.PersonnageDaoImpl;
 import be.helha.poo3.projet.javafx.projetjavafx.domaine.Armes;
 import be.helha.poo3.projet.javafx.projetjavafx.domaine.Personnage;
 import javafx.fxml.FXML;
@@ -33,6 +35,7 @@ public class ControleurArme implements Initializable {
 
     int idArmes;
 
+    ArmeDaoImpl armeDaoImpl = new ArmeDaoImpl();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         pnPopup.setVisible(false);
@@ -44,9 +47,19 @@ public class ControleurArme implements Initializable {
     }
 
     private void initBtNonconfimation() {
+        btNonconfimation.setOnAction(e -> {
+            pnPopup.setVisible(false);
+        });
     }
 
     private void initbtModifier() {
+        btModifier.setOnAction(e -> {
+            try {
+                checkValidity("modifier");
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
     }
 
     private void initbtSupprimer() {
@@ -97,7 +110,25 @@ public class ControleurArme implements Initializable {
             armesToAdd.setDegats(degats);
         }
 
-      
+        if (Objects.equals(operation, "modifier")){
+            if (!(this.modifierArmes(armesToAdd))){
+                lbMessageError.setText("Erreur de la modification de l'arme.");
+            }else{
+                lbMessageError.setText("Arme modifier");
+            }
+        }else if (Objects.equals(operation, "supprimer")){
+            if (!(this.supprimer(armesToAdd))){
+                lbMessageError.setText("Erreur de la suppression de l'arme.");
+            }
+        }
+    }
+
+    private boolean modifierArmes(Armes armes) throws IOException {
+        return armeDaoImpl.modifierArmes(armes);
+    }
+
+    private boolean supprimer(Armes arme) throws IOException {
+        return armeDaoImpl.supprimerArmes(arme.getId());
     }
 
     private boolean allFieldsFilled(String name, String degatsText) {

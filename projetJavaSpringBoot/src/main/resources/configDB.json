@@ -1,0 +1,4 @@
+{
+  "ConnectionType": "DB",
+  "DBPath": "jdbc:sqlite:C:/sqlite/db/poo3.db"
+}

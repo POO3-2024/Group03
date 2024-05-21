@@ -122,11 +122,4 @@ public class ControleurListArmes implements Initializable {
         stagePrincipal.show();
     }
 
-
-
-
-
-
-
-
 }

@@ -1,12 +1,18 @@
 package be.helha.poo3.projet.springboot.projetjavaspringboot;
 
+import be.helha.poo3.projet.springboot.projetjavaspringboot.daoImpl.DBManager;
+import be.helha.poo3.projet.springboot.projetjavaspringboot.domaine.Armes;
+import be.helha.poo3.projet.springboot.projetjavaspringboot.domaine.Personnage;
+import be.helha.poo3.projet.springboot.projetjavaspringboot.daoImpl.PersonnageDaoImpl;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Controler des personnages : permet de lister les personnages ou voir le détail d'un personnage
@@ -17,84 +23,85 @@ import java.util.List;
 @RequestMapping("/personnage")
 public class ControlPersonnage {
 
-
+    private PersonnageDaoImpl personnageDao = new PersonnageDaoImpl();
     /**
-     * Renvoie la liste des personnages
+     * Renvoie la liste des personnages (HTTP GET)
      * @return String message contenant la liste des personnages ou un message d'erreur
      */
     @GetMapping ("")
-    public String listerPersonnage(){
-        // connexion à la DB
-        DBManager dbManager = new DBManager();
-        Connection con = dbManager.connecter();
+    public List<Map<String,String>> listerPersonnage(){
 
-        if(con!=null){
-            // Preparation de la requete sql
-            String query = "SELECT * FROM PERSONNAGE";
-            try{
-                Statement statement = con.createStatement();
-                ResultSet resultSet =statement.executeQuery(query);
+        try{
+            // chercher la liste des personnages
+            List<Personnage> listePersonnage = personnageDao.listerPersonnages() ; // peu lancer une exception
 
-                List<Personnage> personnages = new ArrayList<Personnage>();
-                StringBuilder htmlResponse = new StringBuilder("<ul>");
-                while (resultSet.next()){
-                    // creer le personnage
-                    Personnage perso = new Personnage(resultSet.getInt(1),resultSet.getString(2),resultSet.getInt(3),resultSet.getInt(4));
-                    personnages.add(perso);
-                    htmlResponse.append("<li>{ id : ").append(perso.getId()).append(", nom : ").append(perso.getNom()).append(" }</li>");
-                }
-                // liste vide
-                if(personnages.isEmpty()){
-                    return "<p> <i> Pas de personnages <i></p>";
-                } else{
-                    // liste des personnages
-                    htmlResponse.append("</ul>");
-                    return htmlResponse.toString();
-                }
-            } catch (SQLException sqlException){
-                return "<p> Erreur de traitement sql</p>";
-            }
+            // preparer la réponse
+            List<Map<String,String>> reponsePersos = new ArrayList<Map<String,String>>();
+            listePersonnage.forEach(perso -> {
+                Map<String,String> mapObj = new HashMap<String,String>();
+                mapObj.put("ID", String.valueOf(perso.getId()));
+                mapObj.put("Nom", perso.getName());
+                reponsePersos.add(mapObj);
+            });
 
-        } else{
-            return "<p> GestionRPG : erreur de connexion a la db </p>";
+            return reponsePersos;
+
+        } catch (Exception e){ // en cas d'erreur un message est envoyé
+            List<Map<String,String>> reponse = new ArrayList<>();
+            Map<String,String> mapReponse = new HashMap<>();
+            mapReponse.put("message","erreur lors du chargement de la liste des personnages");
+            reponse.add(mapReponse);
+
+            return reponse;
+
         }
+
+
     }
 
     /**
-     * Renvoie la description détaillée d'un personnage selon un identifiant
+     * Renvoie la description détaillée d'un personnage selon un identifiant (HTTP GET)
      * @param id String identifiant du personnage
      * @return message contenant la description du personnage correspondant à l'id ou un message d'erreur
-     * @throws SQLException
      */
     @GetMapping("{id}")
-    public String getPersonnage(@PathVariable String id) throws SQLException {
-        DBManager dbManager = new DBManager();
-        Connection con = dbManager.connecter();
+    public Map<String,String> getPersonnage(@PathVariable String id) {
 
+        // verifie si l'identifiant est valide
         boolean estEntier = id.matches("[0-9]+");
         if(!estEntier){
-            return "<p> Identifiant n'est pas un entier </p>";
+            Map<String,String> mapReponse = new HashMap<>();
+            mapReponse.put("message","l'identifiant du personnage n'est pas un entier");
+            return mapReponse;
         }
 
-        if(con==null){
-            return "<p> Erreur de connexion a la db </p>";
-        }
-        try {
-            String query = "SELECT * FROM personnage WHERE id=" + "'" + id + "'";
-            Statement statement = con.createStatement();
-            ResultSet resultSet =statement.executeQuery(query);
-            Personnage perso = null;
-            while (resultSet.next()){
-                perso = new Personnage(resultSet.getInt(1),resultSet.getString(2),resultSet.getInt(3),resultSet.getInt(4));
-            }
+        try{
+            // recuperer le personnage
+            Personnage perso = personnageDao.getPersonnage(id); // peu lancer une exception
+
+            // verifie si l'arme existe
             if(perso == null){
-                return "<p> Pas de personnage à l'id : " +  id +  "</p>";
-            } else{
-                return  "<p>" + perso.toString() + "</p>";
+                Map<String,String> mapReponse = new HashMap<>();
+                mapReponse.put("message","Le personnage avec l'identifiant " + id + " n'existe pas");
+                return mapReponse;
             }
-        } catch (SQLException sqlException){
-            return "<p>" + sqlException.getMessage() + "</p>";
+
+            // preparer la réponse
+            Map<String,String> mapObj = new HashMap<String,String>();
+            mapObj.put("ID", String.valueOf(perso.getId()));
+            mapObj.put("Nom", perso.getName());
+            mapObj.put("Point de vie",String.valueOf(perso.getPointDeVie()));
+            mapObj.put("Manna",String.valueOf(perso.getManna()));
+
+            return mapObj;
+
+        } catch (Exception e){ // en cas d'erreur un message est envoyé
+            Map<String,String> mapReponse = new HashMap<>();
+            mapReponse.put("message","erreur lors du chargement du personnage");
+            return mapReponse;
+
         }
+
 
     }
 }

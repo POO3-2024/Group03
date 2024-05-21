@@ -1,16 +1,22 @@
 package be.helha.poo3.projet.springboot.projetjavaspringboot;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import be.helha.poo3.projet.springboot.projetjavaspringboot.domaine.Armes;
+import be.helha.poo3.projet.springboot.projetjavaspringboot.daoImpl.ArmeDaoImpl;
+import be.helha.poo3.projet.springboot.projetjavaspringboot.daoImpl.PersonnageDaoImpl;
+import be.helha.poo3.projet.springboot.projetjavaspringboot.domaine.Personnage;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import be.helha.poo3.projet.springboot.projetjavaspringboot.daoImpl.DBManager;
+import be.helha.poo3.projet.springboot.projetjavaspringboot.daoImpl.*;
 
 /**
  * Controler contient les méthodes d'attaques
@@ -21,79 +27,67 @@ import java.util.List;
 @RequestMapping("/attaque")
 public class ControlAttaque {
 
+    private ArmeDaoImpl armeDao = new ArmeDaoImpl();
+    private PersonnageDaoImpl personnageDao = new PersonnageDaoImpl();
+
     /**
-     * Permet d'attaquer une personnage avec une arme
+     * Permet d'attaquer une personnage avec une arme (HTTP PUT)
      * @param idPerso String identifiant du personnage attaqué
      * @param idArme String identifiant de l'arme utilisée lors de l'attaque
-     * @return String message contenant les détails du personnage attaqué ou un message d'erreur
-     * @throws SQLException
+     * @return Map<String,String> message contenant les détails du personnage attaqué ou un message d'erreur
      */
-    @GetMapping("{idPerso}/{idArme}")
-    public String attaquer(@PathVariable String idPerso, @PathVariable String idArme) throws SQLException {
-        // connexion
-        DBManager dbManager = new DBManager();
-        Connection con = dbManager.connecter();
+    @PutMapping ("{idPerso}/{idArme}")
+    public Map<String,String> attaquer(@PathVariable String idPerso, @PathVariable String idArme) {
 
         // verifier si idPerso et idArme sont des entiers
         boolean idPersoEstEntier = idPerso.matches("[0-9]+");
         boolean idArmeEstEntier = idArme.matches("[0-9]+");
 
         if(!idPersoEstEntier || !idArmeEstEntier){
-            return "<p> Au moins un des identifiants n'est pas un entier </p>";
+            Map<String,String> mapReponse = new HashMap<>();
+            mapReponse.put("message","Au moins un des identifiants n'est pas un entier");
+            return mapReponse;
         }
 
-        // verifier connexion
-        if (con == null) {
-            return "<p> Erreur de connexion a la db </p>";
-        }
-
-        try {
+        try{
             // recuperer arme
-            String query = "SELECT * FROM ARME WHERE id=" + "'" + idArme + "'";
-            Statement statement = con.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-            Arme arme = null;
-            while (resultSet.next()) {
-                arme = new Arme(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3));
-
-            }
+            Armes arme = armeDao.getArme(idArme); // peu lancer une exception
 
             // recuperer perso
-            query = "SELECT * FROM PERSONNAGE WHERE id=" + "'" + idPerso + "'";
-            statement = con.createStatement();
-            resultSet = statement.executeQuery(query);
-            Personnage perso = null;
-            while (resultSet.next()) {
-                perso = new Personnage(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3),resultSet.getInt(4));
+            Personnage perso = personnageDao.getPersonnage(idPerso); // peu lancer une exception
 
-            }
-
+            // verifie si perso et arme existe
             if (perso == null) {
-                return "<p> Pas de personnage à l'id : " + idPerso + "</p>";
+                Map<String,String> mapReponse = new HashMap<>();
+                mapReponse.put("message","Le personnage avec l'identifiant " + idPerso + " n'existe pas");
+                return mapReponse;
             }
             if (arme == null) {
-                return "<p> Pas d'arme à l'id : " + idArme + "</p>";
-            } else {
-                StringBuilder htmlResponse = new StringBuilder();
-                htmlResponse.append("<p>{ perso avant l'attaque : ").append(perso.toString()).append(" }</p><br>");
-                htmlResponse.append("<p>{ Avant arme utilisé : ").append(arme.toString()).append(" }</p><br>");
-
-                perso.setPv(perso.getPv()-arme.getDegat());
-                if(perso.getPv()<0) perso.setPv(0);
-
-
-                // Modifier dans la db
-                query = "UPDATE PERSONNAGE SET pv=" + perso.getPv() + " WHERE id=" + "'" + idPerso + "'";
-                statement = con.createStatement();
-                statement.executeUpdate(query);
-
-
-                htmlResponse.append("<p>{ détail du perso attaqué : ").append(perso.toString()).append(" }</p><br>");
-                return htmlResponse.toString();
+                Map<String,String> mapReponse = new HashMap<>();
+                mapReponse.put("message","L'arme avec l'identifiant " + idArme + " n'existe pas");
+                return mapReponse;
             }
-        } catch (SQLException sqlException) {
-            return "<p>" + sqlException.getMessage() + "</p>";
-        }
 
+            // attaque
+            perso.setPointDeVie(perso.getPointDeVie()-arme.getDegats());
+            if(perso.getPointDeVie() <= 0) perso.setPointDeVie(0);
+
+            // modifier personnage
+            personnageDao.modifierPersonnage(perso);
+
+            // preparer la reponse
+            Map<String,String> mapObj = new HashMap<String,String>();
+            mapObj.put("ID", String.valueOf(perso.getId()));
+            mapObj.put("Nom", perso.getName());
+            mapObj.put("Point de vie",String.valueOf(perso.getPointDeVie()));
+            mapObj.put("Manna",String.valueOf(perso.getManna()));
+
+            return mapObj;
+
+        } catch (Exception e){
+            Map<String,String> mapReponse = new HashMap<>();
+            mapReponse.put("message","erreur lors du chargement de l'attaque");
+            return mapReponse;
+        }
     }
 }

@@ -1,5 +1,10 @@
 package be.helha.poo3.projet.springboot.projetjavaspringboot;
 
+import be.helha.poo3.projet.springboot.projetjavaspringboot.daoImpl.DBManager;
+import be.helha.poo3.projet.springboot.projetjavaspringboot.daoImpl.ArmeDaoImpl;
+import be.helha.poo3.projet.springboot.projetjavaspringboot.domaine.Armes;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.gson.JsonObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +15,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Controler des armes : permet de lister les armes ou voir le détail d'une arme
@@ -21,86 +28,87 @@ import java.util.List;
 @RequestMapping("/arme")
 public class ControlArme {
 
+    private ArmeDaoImpl armeDao = new ArmeDaoImpl();
 
     /**
-     * Renvoie la liste des armes
+     * Renvoie la liste des armes (HTTP GET)
      * @return String message contenant la liste des personnages ou un message d'erreur
      */
     @GetMapping("")
-    public String listerArme() {
-        // connexion à la DB
-        DBManager dbManager = new DBManager();
-        Connection con = dbManager.connecter();
+    public List<Map<String,String>> listerArme() {
 
-        if (con != null) {
-            // Preparation de la requete sql
-            String query = "SELECT * FROM ARME";
-            try {
-                Statement statement = con.createStatement();
-                ResultSet resultSet = statement.executeQuery(query);
+        try{
+            // chercher la liste des armes
+            List<Armes> listerArmes = armeDao.ListerArmes(); // peu lancer une exception
 
-                List<Arme> armes = new ArrayList<Arme>();
-                StringBuilder htmlResponse = new StringBuilder("<ul>");
-                while (resultSet.next()) {
-                    // creer l'arme
-                    Arme arme = new Arme(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3));
-                    armes.add(arme);
-                    htmlResponse.append("<li>{ id : ").append(arme.getId()).append(", nom : ").append(arme.getNom()).append(" }</li>");
-                }
-                // liste vide
-                if (armes.isEmpty()) {
-                    return "<p> <i> Pas d'armes <i></p>";
-                } else {
-                    // liste des armes
-                    htmlResponse.append("</ul>");
-                    return htmlResponse.toString();
-                }
-            } catch (SQLException sqlException) {
-                return "<p> Erreur de traitement sql</p>";
-            }
+            // preparer la réponse
+            List<Map<String,String>> reponseArmes = new ArrayList<Map<String,String>>();
+            listerArmes.forEach(armes -> {
+                Map<String,String> mapObj = new HashMap<String,String>();
+                mapObj.put("ID", String.valueOf(armes.getId()));
+                mapObj.put("Nom", armes.getNom());
+                reponseArmes.add(mapObj);
+            });
 
-        } else {
-            return "<p> GestionRPG : erreur de connexion a la db </p>";
+            return reponseArmes;
+
+        } catch (Exception e){ // en cas d'erreur un message est envoyé
+            List<Map<String,String>> reponse = new ArrayList<>();
+            Map<String,String> mapReponse = new HashMap<>();
+            mapReponse.put("message","erreur lors du chargement de la liste des armes");
+            reponse.add(mapReponse);
+
+            return reponse;
+
         }
+
+
     }
 
     /**
-     * Renvoie la description détaillée d'une arme selon un identifiant
+     * Renvoie la description détaillée d'une arme selon un identifiant (HTTP GET)
      * @param id string identifiant de l'arme
      * @return message contenant la description du personnage correspondant à l'id ou un message d'erreur
      * @throws SQLException
      */
     @GetMapping("{id}")
-    public String getArme(@PathVariable String id) throws SQLException {
-        DBManager dbManager = new DBManager();
-        Connection con = dbManager.connecter();
+    public Map<String,String> getArme(@PathVariable String id) {
 
+        // verifie si l'identifiant est valide
         boolean estEntier = id.matches("[0-9]+");
         if(!estEntier){
-            return "<p> Identifiant n'est pas un entier </p>";
+            Map<String,String> mapReponse = new HashMap<>();
+            mapReponse.put("message","l'identifiant de l'arme n'est pas un entier");
+            return mapReponse;
         }
 
-        if (con == null) {
-            return "<p> Erreur de connexion a la db </p>";
-        }
+        try{
+            // recuperer l'arme
+            Armes arme = armeDao.getArme(id); // peu lancer une exception
 
-        try {
-            String query = "SELECT * FROM ARME WHERE id=" + "'" + id + "'";
-            Statement statement = con.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-            Arme arme = null;
-            while (resultSet.next()) {
-                arme = new Arme(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3));
-
+            // verifie si l'arme existe
+            if(arme == null){
+                Map<String,String> mapReponse = new HashMap<>();
+                mapReponse.put("message","L'arme avec l'identifiant " + id + " n'existe pas");
+                return mapReponse;
             }
-            if (arme == null) {
-                return "<p> Pas d'arme à l'id : " + id + "</p>";
-            } else {
-                return "<p>" + arme.toString() + "</p>";
-            }
-        } catch (SQLException sqlException) {
-            return "<p>" + sqlException.getMessage() + "</p>";
+
+            // preparer la réponse
+            Map<String,String> mapObj = new HashMap<String,String>();
+            mapObj.put("ID", String.valueOf(arme.getId()));
+            mapObj.put("Nom", arme.getNom());
+            mapObj.put("Degat",String.valueOf(arme.getDegats()));
+
+            return mapObj;
+
+        } catch (Exception e){ // en cas d'erreur un message est envoyé
+            Map<String,String> mapReponse = new HashMap<>();
+            mapReponse.put("message","erreur lors du chargement de l'arme");
+            return mapReponse;
+
         }
+
 
     }
+
 }

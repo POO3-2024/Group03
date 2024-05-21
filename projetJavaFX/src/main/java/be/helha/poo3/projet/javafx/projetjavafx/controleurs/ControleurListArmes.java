@@ -106,12 +106,13 @@ public class ControleurListArmes implements Initializable {
     }
 
     private void openVueArmes(Armes armes) throws IOException {
-        Stage stagePrincipal = (Stage) btAddArmes.getScene().getWindow();
+        Stage stagePrincipal = (Stage) lvNom.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vues/fiche-arme.fxml"));
         Parent root = loader.load();
         ControleurArme controller = loader.getController();
 
         // Stocker les données dans le nœud racine de la vue source
+
 
         controller.lbId.setText("Armes : "+ armes.getId());
         controller.lbName.setText(armes.getNom());

@@ -36,7 +36,7 @@ public class ControleurListArmes implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //this.mettreAJourListeArmes();
+        this.mettreAJourListeArmes();
         this.initBtAddArmes();
         this.initBtRetour();
     }
@@ -55,7 +55,7 @@ public class ControleurListArmes implements Initializable {
     }
 
     private void openVueAcceille() throws IOException{
-        //this.mettreAJourListeArmes();
+        this.mettreAJourListeArmes();
         this.goTo("/Vues/acceuil.fxml");
     }
     private void goTo(String s) throws IOException {
@@ -104,6 +104,12 @@ public class ControleurListArmes implements Initializable {
 
         stagePrincipal.setScene(new Scene(root));
         stagePrincipal.show();
+    }
+
+    private void mettreAJourListeArmes() {
+        lvNom.getItems().clear();
+        lvDegats.getItems().clear();
+        this.listerArmes();
     }
 
 

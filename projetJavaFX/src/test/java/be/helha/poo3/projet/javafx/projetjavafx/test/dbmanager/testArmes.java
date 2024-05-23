@@ -10,12 +10,21 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
+/**
+ * Classe de test pour la gestion des armes utilisant JUnit 5.
+ *
+ * @author Alahyane Abdel
+ */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class testArmes {
 
     ArmeDaoImpl armeDaoImpl = new ArmeDaoImpl();
     private static final List<Armes> armes = new ArrayList<>();
 
+    /**
+     * Méthode d'initialisation exécutée avant tous les tests.
+     * Initialise une liste d'armes à utiliser dans les tests.
+     */
     @BeforeAll
     static void initialisation() {
         Armes epee = new Armes("Epée");
@@ -32,6 +41,10 @@ public class testArmes {
 
     }
 
+    /**
+     * Test de l'ajout d'armes dans la base de données.
+     * Vérifie que chaque arme est ajoutée avec succès et qu'un doublon ne peut pas être ajouté.
+     */
     @Test
     @Order(1)
     public void testAjoutArme(){
@@ -45,6 +58,10 @@ public class testArmes {
     }
 
 
+    /**
+     * Test de la liste des armes dans la base de données.
+     * Vérifie que toutes les armes sont correctement listées et que les attributs correspondent.
+     */
     @Test
     @Order(2)
     public void testListerArmes() throws Throwable{
@@ -63,6 +80,10 @@ public class testArmes {
 
 
 
+    /**
+     * Test de la recherche d'armes dans la base de données par nom.
+     * Vérifie que chaque arme est correctement récupérée par son nom.
+     */
     @Test
     @Order(3)
     public void testRechercherArmes() throws Throwable{
@@ -76,6 +97,10 @@ public class testArmes {
         assertNull(armeDaoImpl.getArme("Pompe"));
     }
 
+    /**
+     * Test de récupération d'une arme existante par son nom.
+     * Vérifie que l'arme "Epée" est correctement récupérée avec les bons attributs.
+     */
     @Test
     @Order(4)
     public void testGetArmeTrouvee() {
@@ -88,7 +113,10 @@ public class testArmes {
     }
 
 
-
+    /**
+     * Test de la modification des attributs d'une arme.
+     * Vérifie que les modifications sont correctement enregistrées dans la base de données.
+     */
     @Test
     @Order(5)
     public void testModifierArmes() throws Throwable{
@@ -109,6 +137,10 @@ public class testArmes {
         assertEquals(armesResultat.getNom(),armesModifier.getNom());
     }
 
+    /**
+     * Test de la suppression des armes de la base de données.
+     * Vérifie que chaque arme est correctement supprimée.
+     */
     @Test
     @Order(6)
     public void testSupprimerArme() throws Throwable{

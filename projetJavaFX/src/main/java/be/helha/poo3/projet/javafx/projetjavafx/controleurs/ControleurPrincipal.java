@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
  *Il affiche le nombre de personnages et navigue vers d'autres vues.
  *
  *@author Mohamed Samba Demba
- *
+ *@author Alahyane Abdel
  */
 
 public class ControleurPrincipal implements Initializable {
@@ -49,6 +49,10 @@ public class ControleurPrincipal implements Initializable {
      * Liste des personnages de l'application.
      */
     private List<Personnage> personnages;
+
+    /**
+     * Liste des armes de l'application.
+     */
     private List<Armes> armes;
 
     /**
@@ -87,6 +91,11 @@ public class ControleurPrincipal implements Initializable {
         });
     }
 
+    /**
+     * Cette méthode ouvre la vue Lister-arme'.
+     *
+     * @throws IOException Si une erreur d'entrée-sortie se produit lors du chargement de la vue.
+     */
     private void openVueArmes() throws IOException{
         this.goTo("/Vues/lister-arme.fxml");
     }
@@ -118,6 +127,9 @@ public class ControleurPrincipal implements Initializable {
         lbNombreDePersonnage.setText("" + this.personnages.size());
     }
 
+    /**
+     * Récupère le nombre d'armes dans la base de données et l'affiche dans un label.
+     */
     private void getNbArmes(){
         this.armes = armeDaoImpl.ListerArmes();
         lbNombreDarme.setText("" + this.armes.size());

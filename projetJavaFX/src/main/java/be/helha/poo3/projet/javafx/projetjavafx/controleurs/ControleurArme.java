@@ -24,6 +24,8 @@ public class ControleurArme implements Initializable {
 
     /**
      * Champ de texte pour les dégâts de l'arme.
+     *
+     *@author Alahyane Abdel
      */
     @FXML
     public TextField lbDegats;

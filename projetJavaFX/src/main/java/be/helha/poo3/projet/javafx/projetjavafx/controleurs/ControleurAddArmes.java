@@ -21,6 +21,8 @@ import java.util.ResourceBundle;
 /**
  * Contrôleur pour l'ajout d'armes dans l'application JavaFX.
  * Cette classe gère les interactions entre les éléments de l'interface utilisateur et la logique métier pour l'ajout d'une arme.
+ *
+ * @author Alahyane Abdel
  */
 public class ControleurAddArmes implements Initializable {
 

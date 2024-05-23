@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
  *Il affiche le nombre de personnages et navigue vers d'autres vues.
  *
  *@author Mohamed Samba Demba
- *
+ *@author Alahyane Abdel
  */
 
 public class ControleurPrincipal implements Initializable {

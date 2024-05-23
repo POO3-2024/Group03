@@ -22,6 +22,8 @@ import java.util.ResourceBundle;
 /**
  * Contrôleur pour la liste des armes dans l'application JavaFX.
  * Cette classe gère l'affichage des armes et les interactions utilisateur pour ajouter ou afficher les détails des armes.
+ *
+ * @author Alahyane Abdel
  */
 public class ControleurListArmes implements Initializable {
     /**

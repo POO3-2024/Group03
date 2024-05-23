@@ -1,8 +1,8 @@
 package be.helha.poo3.projet.springboot.projetjavaspringboot;
 
-import be.helha.poo3.projet.springboot.projetjavaspringboot.daoImpl.DBManager;
-import be.helha.poo3.projet.springboot.projetjavaspringboot.daoImpl.ArmeDaoImpl;
-import be.helha.poo3.projet.springboot.projetjavaspringboot.domaine.Armes;
+
+import be.helha.lib.poo3.daoImpl.ArmeDaoImpl;
+import be.helha.lib.poo3.domaine.Armes;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.JsonObject;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -84,7 +84,7 @@ public class ControlArme {
 
         try{
             // recuperer l'arme
-            Armes arme = armeDao.getArme(id); // peu lancer une exception
+            Armes arme = armeDao.getArmeID(id); // peu lancer une exception
 
             // verifie si l'arme existe
             if(arme == null){

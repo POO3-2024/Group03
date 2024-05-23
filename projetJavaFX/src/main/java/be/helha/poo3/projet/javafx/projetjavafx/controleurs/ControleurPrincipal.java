@@ -1,9 +1,10 @@
 package be.helha.poo3.projet.javafx.projetjavafx.controleurs;
 
-import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.ArmeDaoImpl;
-import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.PersonnageDaoImpl;
-import be.helha.poo3.projet.javafx.projetjavafx.domaine.Armes;
-import be.helha.poo3.projet.javafx.projetjavafx.domaine.Personnage;
+
+import be.helha.lib.poo3.daoImpl.ArmeDaoImpl;
+import be.helha.lib.poo3.daoImpl.PersonnageDaoImpl;
+import be.helha.lib.poo3.domaine.Armes;
+import be.helha.lib.poo3.domaine.Personnage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -105,7 +106,7 @@ public class ControleurPrincipal implements Initializable {
         });
     }
   
-     * Cette méthode ouvre la vue Lister-arme'.
+     /** Cette méthode ouvre la vue Lister-arme'.
      *
      * @throws IOException Si une erreur d'entrée-sortie se produit lors du chargement de la vue.
      */

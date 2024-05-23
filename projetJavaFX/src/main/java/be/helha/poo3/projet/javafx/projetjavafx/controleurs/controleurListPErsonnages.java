@@ -1,7 +1,8 @@
 package be.helha.poo3.projet.javafx.projetjavafx.controleurs;
 
-import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.PersonnageDaoImpl;
-import be.helha.poo3.projet.javafx.projetjavafx.domaine.Personnage;
+
+import be.helha.lib.poo3.daoImpl.PersonnageDaoImpl;
+import be.helha.lib.poo3.domaine.Personnage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -102,6 +103,7 @@ public class controleurListPErsonnages implements Initializable {
          * */
          for (Personnage personnage : personnages) {
              Label lbNamePerso= new Label(personnage.getName());
+             lbNamePerso.setMinWidth(338);
              initNameAction(lbNamePerso, personnage);
              lvNom.getItems().add(lbNamePerso);
              lvPv.getItems().add(personnage.getPointDeVie());

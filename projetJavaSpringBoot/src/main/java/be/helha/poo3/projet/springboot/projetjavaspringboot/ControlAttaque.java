@@ -1,9 +1,10 @@
 package be.helha.poo3.projet.springboot.projetjavaspringboot;
 
-import be.helha.poo3.projet.springboot.projetjavaspringboot.domaine.Armes;
-import be.helha.poo3.projet.springboot.projetjavaspringboot.daoImpl.ArmeDaoImpl;
-import be.helha.poo3.projet.springboot.projetjavaspringboot.daoImpl.PersonnageDaoImpl;
-import be.helha.poo3.projet.springboot.projetjavaspringboot.domaine.Personnage;
+
+import be.helha.lib.poo3.daoImpl.ArmeDaoImpl;
+import be.helha.lib.poo3.daoImpl.PersonnageDaoImpl;
+import be.helha.lib.poo3.domaine.Armes;
+import be.helha.lib.poo3.domaine.Personnage;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Connection;
@@ -15,8 +16,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import be.helha.poo3.projet.springboot.projetjavaspringboot.daoImpl.DBManager;
-import be.helha.poo3.projet.springboot.projetjavaspringboot.daoImpl.*;
 
 /**
  * Controler contient les méthodes d'attaques
@@ -51,10 +50,10 @@ public class ControlAttaque {
 
         try{
             // recuperer arme
-            Armes arme = armeDao.getArme(idArme); // peu lancer une exception
+            Armes arme = armeDao.getArmeID(idArme); // peu lancer une exception
 
             // recuperer perso
-            Personnage perso = personnageDao.getPersonnage(idPerso); // peu lancer une exception
+            Personnage perso = personnageDao.getPersonnageID(idPerso); // peu lancer une exception
 
             // verifie si perso et arme existe
             if (perso == null) {

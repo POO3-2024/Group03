@@ -25,13 +25,13 @@ public class ControleurArme implements Initializable {
     @FXML
     public TextField lbDegats, lbName;
     @FXML
-    public Label lbId;
+    public Label lbId,lbMessageError;
     @FXML
     public Pane pnPopup;
 
     @FXML
     public Button btNonconfimation ,btConfirmation ,btSupprimer ,btModifier,btRetour;
-    public Label lbMessageError;
+
 
     int idArmes;
 

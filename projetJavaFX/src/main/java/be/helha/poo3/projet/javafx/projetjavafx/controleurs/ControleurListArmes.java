@@ -117,7 +117,7 @@ public class ControleurListArmes implements Initializable {
         controller.lbId.setText("Armes : "+ armes.getId());
         controller.lbName.setText(armes.getNom());
         controller.lbDegats.setText(""+ armes.getDegats());
-        controller.lbId.setText(""+armes.getId());
+        controller.idArmes = armes.getId();
 
         stagePrincipal.setScene(new Scene(root));
         stagePrincipal.show();

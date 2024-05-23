@@ -1,6 +1,8 @@
 package be.helha.poo3.projet.javafx.projetjavafx.controleurs;
 
+import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.ArmeDaoImpl;
 import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.PersonnageDaoImpl;
+import be.helha.poo3.projet.javafx.projetjavafx.domaine.Armes;
 import be.helha.poo3.projet.javafx.projetjavafx.domaine.Personnage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,11 +43,13 @@ public class ControleurPrincipal implements Initializable {
      * Gestionnaire des personnages de l'application.
      */
     private final PersonnageDaoImpl personnageDaoImpl = new PersonnageDaoImpl();
+    private final ArmeDaoImpl armeDaoImpl = new ArmeDaoImpl();
 
     /**
      * Liste des personnages de l'application.
      */
     private List<Personnage> personnages;
+    private List<Armes> armes;
 
     /**
      * Référence à la fenêtre principale de l'application.
@@ -62,6 +66,7 @@ public class ControleurPrincipal implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         getNbPersonnage();
+        getNbArmes();
         btPersonnage.setOnAction(event -> {
             try {
                 openVuePersonnage();
@@ -69,6 +74,21 @@ public class ControleurPrincipal implements Initializable {
                 e.printStackTrace();
             }
         });
+        initBoutonArmes();
+    }
+
+    private void initBoutonArmes(){
+        btArme.setOnAction(event -> {
+            try {
+                openVueArmes();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    private void openVueArmes() throws IOException{
+        this.goTo("/Vues/lister-arme.fxml");
     }
 
     /**
@@ -96,6 +116,11 @@ public class ControleurPrincipal implements Initializable {
     private void getNbPersonnage() {
         this.personnages = personnageDaoImpl.listerPersonnages();
         lbNombreDePersonnage.setText("" + this.personnages.size());
+    }
+
+    private void getNbArmes(){
+        this.armes = armeDaoImpl.ListerArmes();
+        lbNombreDarme.setText("" + this.armes.size());
     }
 
     /**

@@ -33,34 +33,56 @@ public class Personnage {
         nbPerso += 1;
     }
 
+    /**
+     * Récupère l'identifiant du personnage.
+     * @return l'identifiant du personnage {@code int}.
+     */
     public int getId() {
         return id;
     }
-
+    /**
+     * Définit l'identifiant du personnage.
+     * @param id l'identifiant du personnage à définir.
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * Récupère le nom.
+     * @return le nom {@code String}.
+     */
     public String getName() {
         return name;
     }
 
+
+    /**
+     * Récupère les points de vie.
+     * @return les points de vie {@code int}.
+     */
     public int getPointDeVie() {
         return pointDeVie;
     }
-
+    /**
+     * Récupère le manna.
+     * @return le manna {@code int}.
+     */
     public int getManna() {
         return manna;
     }
 
+    /**
+     * Modifie les points de vie.
+     * @param pointDeVie les points de vie à définir.
+     */
     public void setPointDeVie(int pointDeVie) {
         this.pointDeVie = pointDeVie;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    /**
+     * Définit la manna.
+     * @param manna la manna à définir.
+     */
     public void setManna(int manna) {
         this.manna = manna;
     }

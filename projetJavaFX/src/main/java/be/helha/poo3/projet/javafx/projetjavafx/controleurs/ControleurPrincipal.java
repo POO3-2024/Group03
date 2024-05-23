@@ -79,6 +79,7 @@ public class ControleurPrincipal implements Initializable {
             }
         });
         initBoutonArmes();
+        initBoutonAttaquer();
     }
 
     private void initBoutonArmes(){
@@ -92,12 +93,28 @@ public class ControleurPrincipal implements Initializable {
     }
 
     /**
+     * Initialise le bouton attaquer
+     */
+    private void initBoutonAttaquer(){
+        btAttaquer.setOnAction(event -> {
+            try {
+                openVueAttaquer();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+  
      * Cette méthode ouvre la vue Lister-arme'.
      *
      * @throws IOException Si une erreur d'entrée-sortie se produit lors du chargement de la vue.
      */
     private void openVueArmes() throws IOException{
         this.goTo("/Vues/lister-arme.fxml");
+    }
+
+    private void openVueAttaquer() throws IOException {
+        this.goTo("/Vues/attaquer.fxml");
     }
 
     /**

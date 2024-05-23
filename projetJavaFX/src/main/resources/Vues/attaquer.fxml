@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.helha.poo3.projet.javafx.projetjavafx.FichePersonnage">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.helha.poo3.projet.javafx.projetjavafx.controleurs.controleurAttaquer">
    <children>
       <HBox prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: grey;" />
       <Label alignment="CENTER" prefHeight="60.0" prefWidth="600.0" text="Attaque" textAlignment="CENTER">
@@ -15,8 +15,8 @@
             <Font name="Bookman Old Style Bold" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="231.0" layoutY="295.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="139.0" text="Attaquer" />
-      <Label layoutX="85.0" layoutY="154.0" text="Arme à utiliser :">
+      <Button fx:id="btAttaquer" layoutX="231.0" layoutY="295.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="139.0" text="Attaquer" />
+      <Label  layoutX="85.0" layoutY="154.0" text="Arme à utiliser :">
          <font>
             <Font size="16.0" />
          </font>
@@ -26,8 +26,8 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="14.0" layoutY="18.0" mnemonicParsing="false" text="&lt;" />
-      <ChoiceBox layoutX="82.0" layoutY="175.0" prefWidth="150.0" />
-      <ChoiceBox layoutX="359.0" layoutY="175.0" prefWidth="150.0" />
+      <Button fx:id="btRetour" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" text="&lt;" />
+      <ChoiceBox fx:id="cbArme" layoutX="82.0" layoutY="175.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="cbPersonnage" layoutX="359.0" layoutY="175.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

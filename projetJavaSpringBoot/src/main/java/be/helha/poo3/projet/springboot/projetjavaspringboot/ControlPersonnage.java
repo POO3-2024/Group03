@@ -1,9 +1,8 @@
 package be.helha.poo3.projet.springboot.projetjavaspringboot;
 
-import be.helha.poo3.projet.springboot.projetjavaspringboot.daoImpl.DBManager;
-import be.helha.poo3.projet.springboot.projetjavaspringboot.domaine.Armes;
-import be.helha.poo3.projet.springboot.projetjavaspringboot.domaine.Personnage;
-import be.helha.poo3.projet.springboot.projetjavaspringboot.daoImpl.PersonnageDaoImpl;
+
+import be.helha.lib.poo3.daoImpl.PersonnageDaoImpl;
+import be.helha.lib.poo3.domaine.Personnage;
 import org.springframework.web.bind.annotation.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -77,7 +76,7 @@ public class ControlPersonnage {
 
         try{
             // recuperer le personnage
-            Personnage perso = personnageDao.getPersonnage(id); // peu lancer une exception
+            Personnage perso = personnageDao.getPersonnageID(id); // peu lancer une exception
 
             // verifie si l'arme existe
             if(perso == null){

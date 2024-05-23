@@ -1,7 +1,8 @@
 package be.helha.poo3.projet.javafx.projetjavafx.controleurs;
 
-import be.helha.poo3.projet.javafx.projetjavafx.domaine.Armes;
-import be.helha.poo3.projet.javafx.projetjavafx.domaine.Personnage;
+
+import be.helha.lib.poo3.daoImpl.ArmeDaoImpl;
+import be.helha.lib.poo3.domaine.Armes;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
-import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.ArmeDaoImpl;
 import javafx.stage.Stage;
 
 
@@ -158,6 +158,7 @@ public class ControleurListArmes implements Initializable {
 
         for (Armes armes : armesList) {
             Label lbNameArme= new Label(armes.getNom());
+            lbNameArme.setMinWidth(420);
             initNameAction(lbNameArme, armes);
             lvNom.getItems().add(lbNameArme);
             lvDegats.getItems().add(armes.getDegats());
@@ -196,7 +197,7 @@ public class ControleurListArmes implements Initializable {
         // Stocker les données dans le nœud racine de la vue source
 
 
-        controller.lbId.setText("Armes : "+ armes.getId());
+        controller.lbId.setText("Armes : "+ armes.getNom());
         controller.lbName.setText(armes.getNom());
         controller.lbDegats.setText(""+ armes.getDegats());
         controller.idArmes = armes.getId();

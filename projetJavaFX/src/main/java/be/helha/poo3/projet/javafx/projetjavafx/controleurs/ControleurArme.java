@@ -22,20 +22,82 @@ import java.util.ResourceBundle;
 
 public class ControleurArme implements Initializable {
 
+    /**
+     * Champ de texte pour les dégâts de l'arme.
+     *
+     *@author Alahyane Abdel
+     */
     @FXML
-    public TextField lbDegats, lbName;
+    public TextField lbDegats;
+    /**
+     * Champ de texte pour le nom de l'arme.
+     */
     @FXML
-    public Label lbId,lbMessageError;
+    public TextField lbName;
+    /**
+     * Label pour l'identifiant de l'arme.
+     */
+    @FXML
+    public Label lbId;
+
+    /**
+     * Label pour afficher les messages d'erreur.
+     */
+    @FXML
+    public Label
+    lbMessageError;
+
+    /**
+     * Panneau pour le popup de confirmation.
+     */
     @FXML
     public Pane pnPopup;
 
+    /**
+     * Bouton pour annuler la confirmation.
+     */
     @FXML
-    public Button btNonconfimation ,btConfirmation ,btSupprimer ,btModifier,btRetour;
+    public Button btNonconfimation;
+    /**
+     * Bouton pour confirmer l'action.
+     */
+    @FXML
+    public Button btConfirmation ;
 
+    /**
+     * Bouton pour supprimer l'arme.
+     */
+    @FXML
+    public Button btSupprimer;
 
+    /**
+     * Bouton pour modifier l'arme.
+     */
+    @FXML
+    public Button btModifier;
+
+    /**
+     * Bouton pour retourner à la vue précédente.
+     */
+    @FXML
+    public Button btRetour;
+
+    /**
+     * Identifiant de l'arme en cours de modification ou de suppression.
+     */
     int idArmes;
 
+    /**
+     * Implémentation du DAO pour la gestion des armes.
+     */
     ArmeDaoImpl armeDaoImpl = new ArmeDaoImpl();
+
+    /**
+     * Initialise la classe du contrôleur. Cette méthode est automatiquement appelée après le chargement du fichier FXML.
+     *
+     * @param url            L'emplacement utilisé pour résoudre les chemins relatifs pour l'objet racine, ou null si l'emplacement n'est pas connu.
+     * @param resourceBundle Les ressources utilisées pour localiser l'objet racine, ou null si l'objet racine n'a pas été localisé.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         pnPopup.setVisible(false);
@@ -46,12 +108,18 @@ public class ControleurArme implements Initializable {
         initBtNonconfimation();
     }
 
+    /**
+     * Initialise le bouton d'annulation de confirmation avec son action.
+     */
     private void initBtNonconfimation() {
         btNonconfimation.setOnAction(e -> {
             pnPopup.setVisible(false);
         });
     }
 
+    /**
+     * Initialise le bouton de modification avec son action.
+     */
     private void initbtModifier() {
         btModifier.setOnAction(e -> {
             try {
@@ -62,12 +130,18 @@ public class ControleurArme implements Initializable {
         });
     }
 
+    /**
+     * Initialise le bouton de suppression avec son action.
+     */
     private void initbtSupprimer() {
         btSupprimer.setOnAction(e -> {
             pnPopup.setVisible(true);
         });
     }
 
+    /**
+     * Initialise le bouton de confirmation avec son action.
+     */
     private void initbtConfirmation() {
         btConfirmation.setOnAction(e -> {
             try {
@@ -80,6 +154,13 @@ public class ControleurArme implements Initializable {
         });
     }
 
+
+    /**
+     * Vérifie la validité des champs et effectue l'opération spécifiée (modification ou suppression) si tous les champs sont valides.
+     *
+     * @param operation L'opération à effectuer ("modifier" ou "supprimer").
+     * @throws IOException Si une erreur d'entrée/sortie se produit.
+     */
     private void checkValidity(String operation) throws IOException{
         String name = lbName.getText();
         String degatsText = lbDegats.getText();
@@ -123,18 +204,46 @@ public class ControleurArme implements Initializable {
         }
     }
 
+    /**
+     * Modifie une arme en utilisant le DAO.
+     *
+     * @param armes L'arme à modifier.
+     * @return true si la modification est réussie, false sinon.
+     * @throws IOException Si une erreur d'entrée/sortie se produit.
+     */
     private boolean modifierArmes(Armes armes) throws IOException {
         return armeDaoImpl.modifierArmes(armes);
     }
 
+
+    /**
+     * Supprime une arme en utilisant le DAO.
+     *
+     * @param arme L'arme à supprimer.
+     * @return true si la suppression est réussie, false sinon.
+     * @throws IOException Si une erreur d'entrée/sortie se produit.
+     */
     private boolean supprimer(Armes arme) throws IOException {
         return armeDaoImpl.supprimerArmes(arme.getId());
     }
 
+    /**
+     * Vérifie si tous les champs sont remplis.
+     *
+     * @param name       Le nom de l'arme.
+     * @param degatsText Les dégâts de l'arme.
+     * @return true si tous les champs sont remplis, false sinon.
+     */
     private boolean allFieldsFilled(String name, String degatsText) {
         return !name.isEmpty() && !degatsText.isEmpty();
     }
 
+    /**
+     * Convertit une chaîne de caractères en entier.
+     *
+     * @param text La chaîne de caractères à convertir.
+     * @return L'entier converti, ou -1 si la chaîne n'est pas un nombre valide.
+     */
     private int parseInteger(String text) {
         try {
             return Integer.parseInt(text);
@@ -144,6 +253,12 @@ public class ControleurArme implements Initializable {
         }
     }
 
+    /**
+     * Vérifie si une chaîne de caractères ne contient que des chiffres.
+     *
+     * @param text La chaîne de caractères à vérifier.
+     * @return true si la chaîne ne contient que des chiffres, false sinon.
+     */
     private boolean containsOnlyDigits(String text) {
         for (char c : text.toCharArray()) {
             if (!Character.isDigit(c)) {
@@ -154,20 +269,9 @@ public class ControleurArme implements Initializable {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /**
+     * Initialise le bouton de retour avec son action.
+     */
     private void initBtRetour() {
         btRetour.setOnAction(e -> {
             try {
@@ -178,10 +282,22 @@ public class ControleurArme implements Initializable {
         });
     }
 
+    /**
+     * Ouvre la vue de la liste des armes.
+     *
+     * @throws IOException Si une erreur d'entrée/sortie se produit.
+     */
     private void openVueArmes() throws IOException {
         this.goTo("/Vues/lister-arme.fxml");
     }
 
+
+    /**
+     * Change la scène actuelle pour celle spécifiée.
+     *
+     * @param s Le chemin de la nouvelle vue.
+     * @throws IOException Si une erreur d'entrée/sortie se produit.
+     */
     private void goTo(String s) throws IOException {
         Stage stagePrincipal = (Stage) btConfirmation.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(s));

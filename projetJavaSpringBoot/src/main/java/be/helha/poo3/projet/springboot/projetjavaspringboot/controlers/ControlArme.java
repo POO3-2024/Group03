@@ -1,19 +1,15 @@
-package be.helha.poo3.projet.springboot.projetjavaspringboot;
+package be.helha.poo3.projet.springboot.projetjavaspringboot.controlers;
 
 
+import be.helha.lib.poo3.dao.ArmeDao;
 import be.helha.lib.poo3.daoImpl.ArmeDaoImpl;
 import be.helha.lib.poo3.domaine.Armes;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.google.gson.JsonObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,17 +18,20 @@ import java.util.Map;
 /**
  * Controler des armes : permet de lister les armes ou voir le détail d'une arme
  * @author Tabi Zaccaria
- * @see be.helha.poo3.projet.springboot.projetjavaspringboot.ControlArme
+ * @see be.helha.poo3.projet.springboot.projetjavaspringboot.controlers.ControlArme
  */
 @RestController
 @RequestMapping("/arme")
 public class ControlArme {
 
-    private ArmeDaoImpl armeDao = new ArmeDaoImpl();
+    /**
+     * Gestionnaire des armes
+     */
+    private ArmeDao armeDao = new ArmeDaoImpl();
 
     /**
      * Renvoie la liste des armes (HTTP GET)
-     * @return String message contenant la liste des personnages ou un message d'erreur
+     * @return List message contenant la liste des personnages ou un message d'erreur
      */
     @GetMapping("")
     public List<Map<String,String>> listerArme() {
@@ -68,8 +67,7 @@ public class ControlArme {
     /**
      * Renvoie la description détaillée d'une arme selon un identifiant (HTTP GET)
      * @param id string identifiant de l'arme
-     * @return message contenant la description du personnage correspondant à l'id ou un message d'erreur
-     * @throws SQLException
+     * @return Map message contenant la description du personnage correspondant à l'id ou un message d'erreur
      */
     @GetMapping("{id}")
     public Map<String,String> getArme(@PathVariable String id) {

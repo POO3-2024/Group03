@@ -1,13 +1,11 @@
-package be.helha.poo3.projet.springboot.projetjavaspringboot;
+package be.helha.poo3.projet.springboot.projetjavaspringboot.controlers;
 
 
+import be.helha.lib.poo3.dao.PersonnageDao;
 import be.helha.lib.poo3.daoImpl.PersonnageDaoImpl;
 import be.helha.lib.poo3.domaine.Personnage;
 import org.springframework.web.bind.annotation.*;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,16 +14,19 @@ import java.util.Map;
 /**
  * Controler des personnages : permet de lister les personnages ou voir le détail d'un personnage
  * @author Tabi Zaccaria
- * @see be.helha.poo3.projet.springboot.projetjavaspringboot.ControlPersonnage
+ * @see be.helha.poo3.projet.springboot.projetjavaspringboot.controlers.ControlPersonnage
  */
 @RestController
 @RequestMapping("/personnage")
 public class ControlPersonnage {
 
-    private PersonnageDaoImpl personnageDao = new PersonnageDaoImpl();
+    /**
+     * Gestionnaire des personnages
+     */
+    private PersonnageDao personnageDao = new PersonnageDaoImpl();
     /**
      * Renvoie la liste des personnages (HTTP GET)
-     * @return String message contenant la liste des personnages ou un message d'erreur
+     * @return List message contenant la liste des personnages ou un message d'erreur
      */
     @GetMapping ("")
     public List<Map<String,String>> listerPersonnage(){
@@ -61,7 +62,7 @@ public class ControlPersonnage {
     /**
      * Renvoie la description détaillée d'un personnage selon un identifiant (HTTP GET)
      * @param id String identifiant du personnage
-     * @return message contenant la description du personnage correspondant à l'id ou un message d'erreur
+     * @return Map contenant la description du personnage correspondant à l'id ou un message d'erreur
      */
     @GetMapping("{id}")
     public Map<String,String> getPersonnage(@PathVariable String id) {

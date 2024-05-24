@@ -1,39 +1,42 @@
-package be.helha.poo3.projet.springboot.projetjavaspringboot;
+package be.helha.poo3.projet.springboot.projetjavaspringboot.controlers;
 
 
+import be.helha.lib.poo3.dao.ArmeDao;
+import be.helha.lib.poo3.dao.PersonnageDao;
 import be.helha.lib.poo3.daoImpl.ArmeDaoImpl;
 import be.helha.lib.poo3.daoImpl.PersonnageDaoImpl;
 import be.helha.lib.poo3.domaine.Armes;
 import be.helha.lib.poo3.domaine.Personnage;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
 /**
  * Controler contient les méthodes d'attaques
  * @author Tabi Zaccaria
- * @see be.helha.poo3.projet.springboot.projetjavaspringboot.ControlAttaque
+ * @see be.helha.poo3.projet.springboot.projetjavaspringboot.controlers.ControlAttaque
  */
 @RestController
 @RequestMapping("/attaque")
 public class ControlAttaque {
 
-    private ArmeDaoImpl armeDao = new ArmeDaoImpl();
-    private PersonnageDaoImpl personnageDao = new PersonnageDaoImpl();
+    /**
+     * Gestionnaire des armes
+     */
+    private ArmeDao armeDao = new ArmeDaoImpl();
+
+    /**
+     * Gestionnaire des personnage
+     */
+    private PersonnageDao personnageDao = new PersonnageDaoImpl();
 
     /**
      * Permet d'attaquer une personnage avec une arme (HTTP PUT)
      * @param idPerso String identifiant du personnage attaqué
      * @param idArme String identifiant de l'arme utilisée lors de l'attaque
-     * @return Map<String,String> message contenant les détails du personnage attaqué ou un message d'erreur
+     * @return Map message contenant les détails du personnage attaqué ou un message d'erreur
      */
     @PutMapping ("{idPerso}/{idArme}")
     public Map<String,String> attaquer(@PathVariable String idPerso, @PathVariable String idArme) {

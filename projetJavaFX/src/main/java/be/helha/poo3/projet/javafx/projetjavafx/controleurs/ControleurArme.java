@@ -1,6 +1,7 @@
 package be.helha.poo3.projet.javafx.projetjavafx.controleurs;
 
 
+import be.helha.lib.poo3.dao.ArmeDao;
 import be.helha.lib.poo3.daoImpl.ArmeDaoImpl;
 import be.helha.lib.poo3.domaine.Armes;
 import javafx.fxml.FXML;
@@ -19,12 +20,14 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * Controler javaFX pour les vues des armes
+ *@author Alahyane Abdel
+ */
 public class ControleurArme implements Initializable {
 
     /**
      * Champ de texte pour les dégâts de l'arme.
-     *
-     *@author Alahyane Abdel
      */
     @FXML
     public TextField lbDegats;
@@ -89,7 +92,7 @@ public class ControleurArme implements Initializable {
     /**
      * Implémentation du DAO pour la gestion des armes.
      */
-    ArmeDaoImpl armeDaoImpl = new ArmeDaoImpl();
+    ArmeDao armeDaoImpl = new ArmeDaoImpl();
 
     /**
      * Initialise la classe du contrôleur. Cette méthode est automatiquement appelée après le chargement du fichier FXML.

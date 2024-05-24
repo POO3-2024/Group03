@@ -1,6 +1,7 @@
 package be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager;
 
 
+import be.helha.lib.poo3.dao.ArmeDao;
 import be.helha.lib.poo3.daoImpl.ArmeDaoImpl;
 import be.helha.lib.poo3.domaine.Armes;
 import org.junit.jupiter.api.*;
@@ -20,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class testArmes {
 
-    ArmeDaoImpl armeDaoImpl = new ArmeDaoImpl();
+    ArmeDao armeDaoImpl = new ArmeDaoImpl();
     private static final List<Armes> armes = new ArrayList<>();
 
     /**

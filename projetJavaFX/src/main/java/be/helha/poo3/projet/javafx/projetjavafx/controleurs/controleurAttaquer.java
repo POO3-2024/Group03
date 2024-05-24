@@ -1,6 +1,8 @@
 package be.helha.poo3.projet.javafx.projetjavafx.controleurs;
 
 
+import be.helha.lib.poo3.dao.ArmeDao;
+import be.helha.lib.poo3.dao.PersonnageDao;
 import be.helha.lib.poo3.daoImpl.ArmeDaoImpl;
 import be.helha.lib.poo3.daoImpl.PersonnageDaoImpl;
 import be.helha.lib.poo3.domaine.Armes;
@@ -20,6 +22,9 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Controler javaFX de la vue attaque
+ */
 public class controleurAttaquer implements Initializable {
     /**
      * Initialisation des choiceBox
@@ -32,27 +37,33 @@ public class controleurAttaquer implements Initializable {
     @FXML
     public Button btRetour, btAttaquer;
     /**
-     *
+     * Label du message d'erreur
      */
     @FXML
     public Label lbMessageErreur;
 
     /**
-     * Gestionnaire des personnages et des armes de l'application.
+     * Gestionnaire des personnages de l'application.
      */
-    private final PersonnageDaoImpl personnageDaoImpl = new PersonnageDaoImpl();
-    private final ArmeDaoImpl armeDaoImpl = new ArmeDaoImpl();
+    private final PersonnageDao personnageDaoImpl = new PersonnageDaoImpl();
     /**
-     * Liste des personnages et des armes des  de l'application.
+     * Gestionnaire des armes de l'application.
      */
-    private  List<Armes> armes;
+    private final ArmeDao armeDaoImpl = new ArmeDaoImpl();
+    /**
+     * Liste des armes de l'application.
+     */
+    private List<Armes> armes;
+    /**
+     * Liste des personnages de l'application.
+     */
     private List<Personnage> personnages;
 
     /**
      * Initialise le contrôleur.
      *
-     * @param url
-     * @param resourceBundle
+     * @param url L'emplacement de l'objet racine
+     * @param resourceBundle Les ressources utilisées pour localiser l'objet racine
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

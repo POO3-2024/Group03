@@ -9,12 +9,16 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 /**
- *
+ * Classe principale de l'application.
  *@author Mohamed Samba Demba
  *
  */
 public class ApplicationGame extends Application {
 
+    /**
+     * Fonction qui permet de lancer la vue principale de javaFX
+     * @param primaryStage
+     */
     @Override
     public void start(Stage primaryStage) {
         try {
@@ -26,9 +30,5 @@ public class ApplicationGame extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void lancer(String[] args) {
-        launch(args);
     }
 }

@@ -1,5 +1,6 @@
 package be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager;
 
+import be.helha.lib.poo3.dao.PersonnageDao;
 import be.helha.lib.poo3.daoImpl.PersonnageDaoImpl;
 import be.helha.lib.poo3.domaine.Personnage;
 import org.junit.jupiter.api.*;
@@ -18,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestCrudPersonnage {
 
-    PersonnageDaoImpl personnageDaoImpl = new PersonnageDaoImpl();
+    PersonnageDao personnageDaoImpl = new PersonnageDaoImpl();
     private static final List<Personnage> personnages = new ArrayList<>();
 
     @BeforeAll

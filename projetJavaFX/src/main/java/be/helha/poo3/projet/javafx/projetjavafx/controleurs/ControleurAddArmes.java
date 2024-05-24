@@ -1,6 +1,7 @@
 package be.helha.poo3.projet.javafx.projetjavafx.controleurs;
 
 
+import be.helha.lib.poo3.dao.ArmeDao;
 import be.helha.lib.poo3.daoImpl.ArmeDaoImpl;
 import be.helha.lib.poo3.domaine.Armes;
 import javafx.fxml.FXML;
@@ -52,7 +53,7 @@ public class ControleurAddArmes implements Initializable {
     /**
      * Implémentation du DAO pour la gestion des armes.
      */
-    ArmeDaoImpl armeDaoImpl = new ArmeDaoImpl();
+    ArmeDao armeDaoImpl = new ArmeDaoImpl();
 
     /**
      * Initialise la classe du contrôleur. Cette méthode est automatiquement appelée après le chargement du fichier FXML.

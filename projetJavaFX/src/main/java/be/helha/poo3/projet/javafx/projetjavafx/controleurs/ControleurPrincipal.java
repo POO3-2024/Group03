@@ -1,6 +1,8 @@
 package be.helha.poo3.projet.javafx.projetjavafx.controleurs;
 
 
+import be.helha.lib.poo3.dao.ArmeDao;
+import be.helha.lib.poo3.dao.PersonnageDao;
 import be.helha.lib.poo3.daoImpl.ArmeDaoImpl;
 import be.helha.lib.poo3.daoImpl.PersonnageDaoImpl;
 import be.helha.lib.poo3.domaine.Armes;
@@ -43,8 +45,8 @@ public class ControleurPrincipal implements Initializable {
     /**
      * Gestionnaire des personnages de l'application.
      */
-    private final PersonnageDaoImpl personnageDaoImpl = new PersonnageDaoImpl();
-    private final ArmeDaoImpl armeDaoImpl = new ArmeDaoImpl();
+    private final PersonnageDao personnageDaoImpl = new PersonnageDaoImpl();
+    private final ArmeDao armeDaoImpl = new ArmeDaoImpl();
 
     /**
      * Liste des personnages de l'application.

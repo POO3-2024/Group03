@@ -1,0 +1,5 @@
+module:main
+be.helha.poo3.projet.javafx.projetjavafx
+be.helha.poo3.projet.javafx.projetjavafx.controleurs
+module:test
+be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager

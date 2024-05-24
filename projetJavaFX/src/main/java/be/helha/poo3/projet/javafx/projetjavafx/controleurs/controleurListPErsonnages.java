@@ -1,6 +1,7 @@
 package be.helha.poo3.projet.javafx.projetjavafx.controleurs;
 
 
+import be.helha.lib.poo3.dao.PersonnageDao;
 import be.helha.lib.poo3.daoImpl.PersonnageDaoImpl;
 import be.helha.lib.poo3.domaine.Personnage;
 import javafx.fxml.FXML;
@@ -38,7 +39,7 @@ public class controleurListPErsonnages implements Initializable {
     /**
      * Gestionnaire des personnages de l'application.
      */
-    private final PersonnageDaoImpl personnageDaoImpl = new PersonnageDaoImpl();
+    private final PersonnageDao personnageDaoImpl = new PersonnageDaoImpl();
     /**
      * Liste des personnages de l'application.
      */
@@ -110,9 +111,12 @@ public class controleurListPErsonnages implements Initializable {
              lvMana.getItems().add(personnage.getManna());
          }
     }
+
     /**
      * Initialise le gestionnaire d'évènements lorsqu'on appuie sur le nom du personnage.
-     * **/
+     * @param lbPersoName
+     * @param personnage
+     */
     public void initNameAction(Label lbPersoName,Personnage personnage){
         lbPersoName.setOnMouseClicked(e -> {
             try {

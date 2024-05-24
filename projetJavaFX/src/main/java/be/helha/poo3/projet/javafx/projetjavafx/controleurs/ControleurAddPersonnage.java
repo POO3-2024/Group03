@@ -1,6 +1,7 @@
 package be.helha.poo3.projet.javafx.projetjavafx.controleurs;
 
 
+import be.helha.lib.poo3.dao.PersonnageDao;
 import be.helha.lib.poo3.daoImpl.PersonnageDaoImpl;
 import be.helha.lib.poo3.domaine.Personnage;
 import javafx.fxml.FXML;
@@ -33,16 +34,19 @@ public class ControleurAddPersonnage implements Initializable {
      *
      * Boutons de l’interface utilisateur pour ajouter une personne et passer à d’autres vues.
      *
-     * */
+     */
     @FXML
     public Button btRetour,btAjouter;
+    /**
+     * Label pour le message d'erreur.
+     */
     @FXML
     public Label lbMessageError;
 
     /**
      * Gestionnaire des personnages de l'application.
      */
-    PersonnageDaoImpl personnageDaoImpl = new PersonnageDaoImpl();
+    PersonnageDao personnageDaoImpl = new PersonnageDaoImpl();
 
     /**
      * Initialise le contrôleur.

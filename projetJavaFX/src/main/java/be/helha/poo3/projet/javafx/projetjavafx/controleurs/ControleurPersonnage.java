@@ -1,6 +1,7 @@
 package be.helha.poo3.projet.javafx.projetjavafx.controleurs;
 
 
+import be.helha.lib.poo3.dao.PersonnageDao;
 import be.helha.lib.poo3.daoImpl.PersonnageDaoImpl;
 import be.helha.lib.poo3.domaine.Personnage;
 import javafx.fxml.FXML;
@@ -52,7 +53,7 @@ public class ControleurPersonnage  implements Initializable {
     /**
      * Gestionnaire des personnages de l'application.
      */
-    PersonnageDaoImpl personnageDaoImpl = new PersonnageDaoImpl();
+    PersonnageDao personnageDaoImpl = new PersonnageDaoImpl();
 
     /**
      * Identifiant du personnage.

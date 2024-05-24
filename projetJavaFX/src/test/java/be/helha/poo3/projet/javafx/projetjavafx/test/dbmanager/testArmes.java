@@ -1,7 +1,8 @@
 package be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager;
 
-import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.ArmeDaoImpl;
-import be.helha.poo3.projet.javafx.projetjavafx.domaine.Armes;
+
+import be.helha.lib.poo3.daoImpl.ArmeDaoImpl;
+import be.helha.lib.poo3.domaine.Armes;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Classe de test pour la gestion des armes utilisant JUnit 5.
+ * La DB de test doit être vide pour que les tests fonctionnent.
  *
  * @author Alahyane Abdel
  */

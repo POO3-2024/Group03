@@ -1,0 +1,6 @@
+Semaine du 15/05/24 au 24/05/24 :
+- Controler Attaquer javaFX (Mohamed Samba Demba)
+- Implementation de la librairie dans les deux projets (Diesbecq Aaron)
+- Controler Arme javaFX (Alahyane Abdel)
+- Test de l'API avec Postman (Tabi Zaccaria)
+- Finalisation du projet (Tous)

@@ -1,6 +1,7 @@
 package be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager;
-import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.PersonnageDaoImpl;
-import be.helha.poo3.projet.javafx.projetjavafx.domaine.Personnage;
+
+import be.helha.lib.poo3.daoImpl.PersonnageDaoImpl;
+import be.helha.lib.poo3.domaine.Personnage;
 import org.junit.jupiter.api.*;
 
 import java.sql.SQLException;
@@ -10,7 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- *
+ * La DB de test doit être vide pour que les tests fonctionnent.
  *@author Mohamed Samba Demba
  *
  */

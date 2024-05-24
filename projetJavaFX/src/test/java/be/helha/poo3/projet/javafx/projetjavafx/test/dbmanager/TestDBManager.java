@@ -1,8 +1,9 @@
 package be.helha.poo3.projet.javafx.projetjavafx.test.dbmanager;
 
-import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.DBManager;
-import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.ParserConfig;
-import be.helha.poo3.projet.javafx.projetjavafx.daoImpl.Persistance;
+
+import be.helha.lib.poo3.daoImpl.DBManager;
+import be.helha.lib.poo3.daoImpl.ParserConfig;
+import be.helha.lib.poo3.daoImpl.Persistance;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -31,7 +32,7 @@ public class TestDBManager {
         Persistance persistance = ParserConfig.lireConfig(CONFIG);
         assert persistance != null;
         assertEquals(persistance.getConnectionType(), "DB");
-        assertEquals(persistance.getDBPath(), "jdbc:sqlite:C:/sqlite/db/poo3.db");
+        assertEquals(persistance.getDBPath(), "jdbc:sqlite:C:/sqlite/db/poo3test.db");
     }
 
     /**
